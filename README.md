@@ -18,28 +18,44 @@ La api se compone de tres ramas principales, cada una con 5 métodos y una rama 
 
 La primera rama permite operar con los vinos:
 GET /api/v1/wines (todos los vinos)
+
 GET /api/v1/wines/{id} (devuelve el vino seleccionado)
+
 POST /api/v1/wines (crea un nuevo vino)
+
 PUT /api/v1/wines/{id} (modifica el vino seleccionado)
+
 DELETE /api/v1/wine/{id} (borra el vino seleccionado)
 
 La segunda rama permite operar con los tipos de vino:
 GET /api/v1/tipos (todos los tipos)
+
 GET /api/v1/tipos/{id} (devuelve el tipo seleccionado)
+
 POST /api/v1/tipos (crea un nuevo tipo)
+
 GET /api/v1/tipos/{id} (un tipo)
+
 PUT /api/v1/tipos/{id} (modifica el tipo seleccionado)
+
 DELETE /api/v1/tipos/{id} (borra el tipo seleccionado)
 
 La tercera rama permite operar con las denominaciones de origen:
+
 GET /api/v1/denominaciones (todos las denominaciones)
+
 GET /api/v1/denominaciones/{id} (devuelve la denominacion seleccionada)
+
 POST /api/v1/denominaciones (crea una nueva denominacion)
+
 PUT /api/v1/denominaciones/{id} (modifica la denominacion seleccionada)
+
 DELETE /api/v1/denominaciones/{id} (borra la denominacion seleccionada)
 
 Por último, tenemos una rama dónde se pueden acceder a los joins, que ofrecen la misma información que se podría obtener con las otras ramas pero de manera más concisa.
+
 GET /api/v1/join/wines/tipos (obtener el tipo de cada vino)
+
 GET /api/v1/join/wines/denominaciones (obtener la denominación de cada vino)
 
 ## Nos gustaría que vieses
