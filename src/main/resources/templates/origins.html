@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denominaciones</title>
+
+    <!-- STYLES -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static "fonts/fonts.css" %}">
+    <link rel="stylesheet" href="{% static "styles/material.css" %}">
+    <link rel="stylesheet" href="{% static "styles/core.css" %}">
+    <link rel="stylesheet" href="{% static "components/transition/transition.css" %}">
+    <link rel="stylesheet" href="{% static "components/dropdown/dropdown.css" %}">
+    <link rel="stylesheet" href="{% static "origins/origins.css" %}">
+    
+    {% load static %}
+    <!-- LIBS -->
+    <script src="{% static "libs/jquery.js" %}"></script>
+    <script src="{% static "libs/material.js" %}"></script>
+    <script src="{% static "libs/anime.js" %}"></script>
+    <!-- COMPONENTS -->
+    <script src="{% static "components/transition/transition.js" %}"></script>
+    <script src="{% static "components/dropdown/dropdown.js" %}"></script>
+    <!-- FRAMEWORK -->
+    <script defer src="{% static "scripts/core.js" %}"></script>
+    <script defer src="{% static "scripts/primitives.js" %}"></script>
+    <script defer src="{% static "scripts/components.js" %}"></script>
+    <script defer src="{% static "scripts/ui.js" %}"></script>
+    <script defer src="{% static "origins/origins.js" %}"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <div id="nav-action">
+                <div>
+                    <span class="icon">menu</span>
+                </div>
+            </div>
+            <div id="nav-page-title"><h3></h3></div>
+        </div>
+        <div class="title">
+            <h1></h1>
+        </div>
+        <div class="subtitle">
+            <h3></h3>
+        </div>
+    </div>
+
+    <div class="search-bar" id="origin_search"">
+        <div class="textbox bottom-sep">
+            <input type="text" placeholder="Buscar entre las denominaciones">
+        </div>
+        <div class="clear">
+            <span class="icon">close</span>
+        </div>
+    </div>
+
+    <div id="origin-cards"></div>
+
+    <div class="space"></div>
+
+    <div class="fab" id="fab-new-origin">
+        <div>
+            <span class="icon">add</span>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="nav-item" id="nav-inventory">
+            <span class="icon">view_agenda</span>
+            <p>Inventario</p>
+        </div>
+        <div class="nav-item" id="nav-origins">
+            <span class="icon">language</span>
+            <p>Denominaciones</p>
+        </div>
+        <div class="nav-item" id="nav-settings">
+            <span class="icon">settings</span>
+            <p>Ajustes</p>
+        </div>
+    </div>
+
+    <data>{{ origins }}</data>
+</body>
+</html>

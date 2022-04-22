@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ nombre }}</title>
+
+    <!-- STYLES -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static "fonts/fonts.css" %}">
+    <link rel="stylesheet" href="{% static "styles/material.css" %}">
+    <link rel="stylesheet" href="{% static "styles/core.css" %}">
+    <link rel="stylesheet" href="{% static "components/transition/transition.css" %}">
+    <link rel="stylesheet" href="{% static "components/dropdown/dropdown.css" %}">
+    <link rel="stylesheet" href="{% static "wine-edit/wine-edit.css" %}">
+    
+    {% load static %}
+    <!-- LIBS -->
+    <script src="{% static "libs/jquery.js" %}"></script>
+    <script src="{% static "libs/material.js" %}"></script>
+    <script src="{% static "libs/anime.js" %}"></script>
+    <!-- COMPONENTS -->
+    <script src="{% static "components/transition/transition.js" %}"></script>
+    <script src="{% static "components/dropdown/dropdown.js" %}"></script>
+    <!-- FRAMEWORK -->
+    <script defer src="{% static "scripts/core.js" %}"></script>
+    <script defer src="{% static "scripts/primitives.js" %}"></script>
+    <script defer src="{% static "scripts/components.js" %}"></script>
+    <script defer src="{% static "scripts/ui.js" %}"></script>
+    <script defer src="{% static "wine-edit/wine-edit.js" %}"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <div id="nav-action">
+                <div>
+                    <span class="icon">menu</span>
+                </div>
+            </div>
+            <div id="nav-page-title"><h3></h3></div>
+        </div>
+        <div class="foreground">
+            <div class="title">
+                <h1></h1>
+            </div>
+            <div class="subtitle">
+                <h3></h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="form" id="wine-edit"></div>
+
+    <div class="floating bottom">
+        <div class="button raised">
+            <div id="action-close"><p>Cerrar</p></div>
+            <div id="action-save"><p>Guardar</p></div>
+        </div>
+    </div>
+
+
+    <data id="data-wine">{{ wine }}</data>
+    <data id="data-origins">{{ origins }}</data>
+    <data id="data-tipos">{{ tipos }}</data>
+</body>
+</html>
