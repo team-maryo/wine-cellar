@@ -1,0 +1,22 @@
+<div>
+    <h4>Hola {{ name }},</h4>
+    <p>Hemos detectado que quedan pocas existencias de {{ wine.name }}.</p>
+</div>
+
+<div style="width: 100%; border-bottom: 1px solid rgb(206, 206, 206);">
+    <h5>{{ wine.name }}</h5>
+    <h6>    - Te quedan {{ wine.quantity }} bottellas.</h6>
+</div>
+
+{% if wines|length > 0 %}
+    <div style="padding-top: 1rem;">
+        <p>Te recordamos que también te quedan pocas existencias de:</p>
+    </div>
+{% endif %}
+
+{% for wine in wines %}
+<div style="width: 100%; border-bottom: 1px solid rgb(206, 206, 206);">
+    <h5>{{ wine.name }}</h5>
+    <h6>    - Te quedan {{ wine.quantity }} bottellas.</h6>
+</div>
+{% endfor %}

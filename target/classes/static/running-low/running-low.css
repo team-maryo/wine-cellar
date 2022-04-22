@@ -1,0 +1,17 @@
+/* PAGE HEADER */
+body > .header {
+    border-bottom: 0px solid var(--separator);
+
+    background: url(/static/assets/empty_cart.svg);
+    background-position: 13rem 3rem;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+/* PAGE ON COMPUTER */
+@media only screen and (max-width: 320px) {
+    body > .header {
+        background-position: 9rem 6rem;
+    }
+    
+}

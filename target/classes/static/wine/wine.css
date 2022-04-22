@@ -1,0 +1,16 @@
+/* PAGE HEADER */
+body > .header {
+    background: url(/static/assets/info.svg);
+    background-position: 12rem 4rem;
+    background-size: 50%;
+    background-repeat: no-repeat;
+
+}
+
+/* PAGE ON COMPUTER */
+@media only screen and (max-width: 320px) {
+    body > .header {
+        background-position: 9rem 6rem;
+    }
+    
+}

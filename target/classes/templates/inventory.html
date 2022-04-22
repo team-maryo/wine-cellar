@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Inventario</title>
+
+        <!-- STYLES -->
+        <link rel="stylesheet" href="fonts/fonts.css" />
+        <link rel="stylesheet" href="styles/material.css" />
+        <link rel="stylesheet" href="styles/core.css" />
+        <link rel="stylesheet" href="components/transition/transition.css" />
+        <link rel="stylesheet" href="components/dropdown/dropdown.css" />
+        <link rel="stylesheet" href="inventory/inventory.css" />
+
+        <!-- LIBS -->
+        <script src="libs/jquery.js"></script>
+        <script src="libs/material.js"></script>
+        <script src="libs/anime.js"></script>
+        <!-- COMPONENTS -->
+        <script src="components/transition/transition.js"></script>
+        <script src="components/dropdown/dropdown.js"></script>
+        <!-- FRAMEWORK -->
+        <script defer src="scripts/core.js"></script>
+        <script defer src="scripts/primitives.js"></script>
+        <script defer src="scripts/components.js"></script>
+        <script defer src="scripts/ui.js"></script>
+        <script defer src="inventory/inventory.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="nav">
+                <div id="nav-action">
+                    <div>
+                        <span class="icon">menu</span>
+                    </div>
+                </div>
+                <div id="nav-page-title"><h3></h3></div>
+            </div>
+            <div class="foreground">
+                <div class="title">
+                    <h1></h1>
+                </div>
+                <div class="subtitle">
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-bar" id="inventory-search">
+            <div class="textbox bottom-sep">
+                <input type="text" placeholder="Buscar entre el inventario" />
+            </div>
+            <div class="clear">
+                <span class="icon">close</span>
+            </div>
+            <div class="filters">
+                <span class="icon">filter_list</span>
+            </div>
+        </div>
+
+        <div id="wine-cards"></div>
+
+        <div class="space"></div>
+
+        <div class="fab" id="fab-new-wine">
+            <div>
+                <span class="icon">add</span>
+            </div>
+        </div>
+
+        <div class="nav">
+            <div class="nav-item" id="nav-running-low">
+                <span class="icon">add_shopping_cart</span>
+                <p>Reponer</p>
+            </div>
+            <div class="nav-item" id="nav-inventory">
+                <span class="icon">view_agenda</span>
+                <p>Inventario</p>
+            </div>
+
+            <div class="nav-item" id="nav-settings">
+                <span class="icon">settings</span>
+                <p>Ajustes</p>
+            </div>
+        </div>
+
+        <div class="overlay" id="inventory-filters-overlay">
+            <div class="section title">
+                <h1 class="title">Filtros</h1>
+            </div>
+
+            <div id="inventory-filters-form"></div>
+
+            <div class="floating bottom">
+                <div class="button raised">
+                    <div id="overlay-action-remove-filters"><p>Quitar</p></div>
+                    <div id="overlay-action-set-filters"><p>Aplicar</p></div>
+                </div>
+            </div>
+        </div>
+
+        <data id="data-wines">{{ wines }}</data>
+        <data id="data-preferences">{{ preferences }}</data>
+        <data id="data-origins">{{ origins }}</data>
+        <data id="data-tipos">{{ tipos }}</data>
+    </body>
+</html>

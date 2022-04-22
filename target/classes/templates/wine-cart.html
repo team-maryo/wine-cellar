@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Carta de vinos</title>
+
+        <!-- STYLES -->
+        <link rel="stylesheet" href="fonts/fonts.css" />
+        <link rel="stylesheet" href="styles/material.css" />
+        <link rel="stylesheet" href="wine-cart/wine-cart.css" media="print" />
+
+        <!-- LIBS -->
+        <script src="libs/jquery.js"></script>
+        <script defer src="components/paged/paged.polyfill.js"></script>
+        <script defer src="wine-cart/wine-cart.js"></script>
+    </head>
+    <body id="body">
+        <div class="title">
+            <h1 class="title">Carta de vinos</h1>
+            <h3 class="subtitle">Las Tejuelas</h3>
+        </div>
+
+        {% for origin in origins %}
+        <div class="origin">
+            <div class="wines">
+                <h2 class="title">{{ origin.nombre }}</h2>
+                {% for wine in origin.wines %}
+                <div class="wine">
+                    <p class="nombre">{{ wine.nombre }}</p>
+                    <p class="price">{{ wine.price }} &euro;</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components</title>
+
+    {% load static %}
+    <link rel="icon" type="image/svg" href="{% static "icons/add.svg" %}">
+
+    <!-- STYLES -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static "fonts/fonts.css" %}">
+    <link rel="stylesheet" href="{% static "styles/material.css" %}">
+    <link rel="stylesheet" href="{% static "styles/core.css" %}">
+    <link rel="stylesheet" href="{% static "components/transition/transition.css" %}">
+    <link rel="stylesheet" href="{% static "components/dropdown/dropdown.css" %}">
+    
+    {% load static %}
+    <!-- LIBS -->
+    <script src="{% static "libs/jquery.js" %}"></script>
+    <script src="{% static "libs/material.js" %}"></script>
+    <!-- COMPONENTS -->
+    <script src="{% static "components/transition/transition.js" %}"></script>
+    <script src="{% static "components/dropdown/dropdown.js" %}"></script>
+    <!-- FRAMEWORK -->
+    <script defer src="{% static "scripts/core.js" %}"></script>
+    <script defer src="{% static "scripts/primitives.js" %}"></script>
+    <script defer src="{% static "scripts/components.js" %}"></script>
+    <script defer src="{% static "scripts/ui.js" %}"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <div id="nav-action">
+                <div>
+                    <span class="icon">menu</span>
+                </div>
+            </div>
+            <div id="nav-page-title"><h3></h3></div>
+        </div>
+        <div class="foreground">
+            <div class="title">
+                <h1></h1>
+            </div>
+            <div class="subtitle">
+                <h3></h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-bar" id="sb_test">
+        <div class="textbox">
+            <input type="text">
+        </div>
+        <div class="clear">
+            {% load static %}
+            <img src="{% static "icons/close.svg" %}" alt="">
+        </div>
+    </div>
+
+    <div class="button raised">
+        <div><p>This is a test</p></div>
+        <div><p>This is a test</p></div>
+    </div>
+
+    <div class="textbox">
+        <input type="text">
+    </div>
+    
+    <div class="dpdown" id="test"></div>
+
+    <div class="textbox bottom-sep">
+        <input type="text">
+    </div>
+
+    <div class="card">
+        <div class="header">
+            <h1 class="title">Valduero</h1>
+            <h3 class="subtitle">RIBERA DEL DUERO · 9818341</h3>
+        </div>
+        <div class="body table">
+            <div class="cell">
+                <div class="table">
+                    {% load static %}
+                    <div class="cell"><img src="{% static "icons/price.svg" %}" alt=""></div>
+                    <div class="cell"><p>34€</p></div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="table">
+                    {% load static %}
+                    <div class="cell"><img src="{% static "icons/location.svg" %}" alt=""></div>
+                    <div class="cell"><p>FRIGORÍFICO</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="header">
+            <h1 class="title">Cosme Palacios</h1>
+            <h3 class="subtitle">RIBERA DEL DUERO · 9818341</h3>
+        </div>
+        <div class="body table">
+            <div class="cell">
+                <div class="table">
+                    {% load static %}
+                    <div class="cell"><img src="{% static "icons/price.svg" %}" alt=""></div>
+                    <div class="cell"><p>34€</p></div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="table">
+                    {% load static %}
+                    <div class="cell"><img src="{% static "icons/location.svg" %}" alt=""></div>
+                    <div class="cell"><p>FRIGORÍFICO</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="header">
+            <h1 class="title">Cosme Palacios</h1>
+            <h3 class="subtitle">RIBERA DEL DUERO · 9818341</h3>
+        </div>
+        <div class="body table">
+            <div class="cell">
+                <div class="table">
+                    {% load static %}
+                    <div class="cell"><img src="{% static "icons/price.svg" %}" alt=""></div>
+                    <div class="cell"><p>34€</p></div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="table">
+                    {% load static %}
+                    <div class="cell"><img src="{% static "icons/location.svg" %}" alt=""></div>
+                    <div class="cell"><p>FRIGORÍFICO</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fab" id="fab-test">
+        <div>
+            <span class="icon">add</span>
+        </div>
+    </div>
+
+    <div class="table data-grid">
+        <div class="cell">
+            <h1 class="data">1</h1>
+            <h3 class="name">Unidades</h3>
+        </div>
+        <div class="cell">
+            <h1 class="data">23</h1>
+            <h3 class="name">Precio en carta</h3>
+        </div>
+        <div class="cell">
+            <h1 class="data">1.2</h1>
+            <h3 class="name">Ubicación</h3>
+        </div>
+        <div class="cell">
+            <h1 class="data">21.23</h1>
+            <h3 class="name">Precio de adquisición</h3>
+        </div>
+        <div class="cell">
+            <h1 class="data">23</h1>
+            <h3 class="name">Precio ajustado</h3>
+        </div>
+        <div class="cell">
+            <h1 class="data">1242352</h1>
+            <h3 class="name">Código Lavinia</h3>
+        </div>
+    </div>
+
+    <div class="checkbox child" id="checkbox-test">
+    </div>
+
+    <div class="form" id="form-test"></div>
+
+    <div class="nav">
+        <div class="nav-item" id="nav-inventory">
+            <span class="icon">view-agenda</span>
+            <p>Inventario</p>
+        </div>
+        <div class="nav-item" id="nav-origin">
+            <span class="icon">language</span>
+            <p>Denominaciones</p>
+        </div>
+        <div class="nav-item" id="nav-settings">
+            <span class="icon">settings</span>
+            <p>Ajustes</p>
+        </div>
+    </div>
+    
+</body>
+</html>
