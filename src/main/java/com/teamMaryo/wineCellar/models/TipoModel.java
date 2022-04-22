@@ -21,8 +21,8 @@ public class TipoModel implements Clientelable {
 	private Long id;
 
     @Size(min=0, max=64)
-	@Column(name="WINE_TIPO")
-	private String wineTipo;
+	@Column(name="NOMBRE")
+	private String nombre;
 	
     @Size(min=0, max=255)
 	@Column(name="DESCRIPTION")
@@ -34,10 +34,10 @@ public class TipoModel implements Clientelable {
 
     public TipoModel() {}
 
-    public TipoModel(Long id, @Size(min = 0, max = 64) String wineTipo, @Size(min = 0, max = 255) String description,
+    public TipoModel(Long id, @Size(min = 0, max = 64) String nombre, @Size(min = 0, max = 255) String description,
             ClientModel client) {
         this.id = id;
-        this.wineTipo = wineTipo;
+        this.nombre = nombre;
         this.description = description;
         this.client = client;
     }
@@ -54,12 +54,11 @@ public class TipoModel implements Clientelable {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getWineTipo() {
-        
-        return wineTipo;
+    public String getNombre() {
+        return nombre;
     }
-    public void setWineTipo(String wineTipo) {
-        this.wineTipo = wineTipo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     public String getDescription() {

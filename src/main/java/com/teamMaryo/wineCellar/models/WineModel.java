@@ -15,6 +15,15 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 
+//     id_wine = models.AutoField(primary_key=True)
+//     quantity = models.IntegerField(default=0)
+//     nombre = models.CharField(max_length=255, null=True)
+//     lavinia_code = models.CharField(max_length=10, null=True)
+//     purchase_price = models.DecimalField(max_digits=9, decimal_places=4, null=True)
+//     selling_price = models.DecimalField(max_digits=9, decimal_places=4, null=True)
+//     location = models.CharField(max_length=50, null=True)
+//     origin = models.ForeignKey(Origin, on_delete=models.PROTECT)
+//     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
 
 @Entity
 @Table(name= "WINE")
@@ -25,11 +34,21 @@ public class WineModel implements Clientelable {
     
     @Size(min=0, max=64)
     @Column(name="NOMBRE")
-    private String name;
+    private String nombre;
     
     @Column(name="DESCRIPTION")
     @Size(min=0, max=255)
     private String description;
+
+    @Column(name="QUANTITY")
+    @Min(0)
+    private Integer quantity;
+
+    @Column(name="PURCHASE_PRICE")
+    private Float purchasePrice;
+
+    @Column(name="LOCATION")
+    private String location;
     
     @Min(1700)
     @Max(2100)
@@ -47,7 +66,7 @@ public class WineModel implements Clientelable {
     
     @ManyToOne
     @OnDelete(action=OnDeleteAction.CASCADE)
-    private DenominacionModel denominacion;
+    private OriginModel origin;
     
     @ManyToOne
     @OnDelete(action=OnDeleteAction.CASCADE)
@@ -55,49 +74,77 @@ public class WineModel implements Clientelable {
 
     public WineModel() {}
 
-    public WineModel(Long id, @Size(min = 0, max = 64) String name, @Size(min = 0, max = 255) String description,
-            @Min(1700) @Max(2100) Long fromYear, @Min(0) @Max(5) Long rating, TipoModel tipo,
-            DenominacionModel denominacion, ClientModel client) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.fromYear = fromYear;
-        this.rating = rating;
-        this.tipo = tipo;
-        this.denominacion = denominacion;
-        this.client = client;
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        WineModel other = (WineModel) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String name) {
+        this.nombre = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public ClientModel getClient() {
-        return client;
-    }
-
-    public void setClient(ClientModel client) {
-        this.client = client;
-    }
-
-    public void setId(Long id){
-        this.id=id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Float getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(Float purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Long getFromYear() {
@@ -124,37 +171,20 @@ public class WineModel implements Clientelable {
         this.tipo = tipo;
     }
 
-    public DenominacionModel getDenominacion() {
-        return denominacion;
+    public OriginModel getOrigin() {
+        return origin;
     }
 
-    public void setDenominacion(DenominacionModel denominacion) {
-        this.denominacion = denominacion;
+    public void setOrigin(OriginModel origin) {
+        this.origin = origin;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
+    public ClientModel getClient() {
+        return client;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        WineModel other = (WineModel) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+    public void setClient(ClientModel client) {
+        this.client = client;
     }
 }
     

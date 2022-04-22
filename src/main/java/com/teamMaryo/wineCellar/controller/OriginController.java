@@ -3,8 +3,8 @@ package com.teamMaryo.wineCellar.controller;
 import java.util.List;
 
 import com.teamMaryo.wineCellar.models.WineModel;
-import com.teamMaryo.wineCellar.models.DenominacionModel;
-import com.teamMaryo.wineCellar.services.DenominacionService;
+import com.teamMaryo.wineCellar.models.OriginModel;
+import com.teamMaryo.wineCellar.services.OriginService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,36 +19,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-public class DenominacionController {
+public class OriginController {
 
     @Autowired
-    private DenominacionService denominacionService;
+    private OriginService denominacionService;
 
-    @GetMapping("/denominaciones")
-    public ResponseEntity<List<DenominacionModel>> retrieveDenominaciones() {
+    @GetMapping("/origins")
+    public ResponseEntity<List<OriginModel>> retrieveDenominaciones() {
         Long clientId = 1L;
-        List<DenominacionModel> denominaciones = denominacionService.retrieveAll(clientId);
+        List<OriginModel> denominaciones = denominacionService.retrieveAll(clientId);
         return ResponseEntity.ok().body(denominaciones);
     }
 
-    @PostMapping("/denominaciones")
-    public ResponseEntity<DenominacionModel> createDenominacion(@RequestBody DenominacionModel denominacion) {
+    @PostMapping("/origins")
+    public ResponseEntity<OriginModel> createDenominacion(@RequestBody OriginModel denominacion) {
         Long clientId = 1L;
-        DenominacionModel newDenominacion = denominacionService.create(clientId, denominacion);
+        OriginModel newDenominacion = denominacionService.create(clientId, denominacion);
         return ResponseEntity.ok().body(newDenominacion);
     }    
     
     @GetMapping("/denominaciones/{denominacionId}")
-    public ResponseEntity<DenominacionModel> retrieveWine(@PathVariable("denominacionId") Long denominacionId) {
+    public ResponseEntity<OriginModel> retrieveWine(@PathVariable("denominacionId") Long denominacionId) {
         Long clientId = 1L;
-        DenominacionModel denominacion = denominacionService.retrieve(clientId,denominacionId);
+        OriginModel denominacion = denominacionService.retrieve(clientId,denominacionId);
         return ResponseEntity.ok().body(denominacion);
     }
 
     @PutMapping("/denominaciones/{denominacionId}")
-    public ResponseEntity<DenominacionModel> updateWine(@PathVariable("denominacionId") Long denominacionId, @RequestBody DenominacionModel newDenominacion) {
+    public ResponseEntity<OriginModel> updateWine(@PathVariable("denominacionId") Long denominacionId, @RequestBody OriginModel newDenominacion) {
         Long clientId = 1L;
-        DenominacionModel denominacion = denominacionService.update(clientId,denominacionId,newDenominacion);
+        OriginModel denominacion = denominacionService.update(clientId,denominacionId,newDenominacion);
         return ResponseEntity.ok().body(denominacion);
     }
 

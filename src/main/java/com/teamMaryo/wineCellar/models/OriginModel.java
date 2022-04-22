@@ -13,15 +13,15 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name="DENOMINACION")
-public class DenominacionModel implements Clientelable {
+@Table(name="ORIGIN")
+public class OriginModel implements Clientelable {
     @Id 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
     @Size(min=0, max=64)
-    @Column(name="DENOMINACION")
-    private String denominacion;
+    @Column(name="NOMBRE")
+    private String nombre;
 
     @Column(name="DESCRIPTION")
     private String description;
@@ -30,12 +30,12 @@ public class DenominacionModel implements Clientelable {
     @OnDelete(action=OnDeleteAction.CASCADE)
     private ClientModel client;
 
-    public DenominacionModel() {}
+    public OriginModel() {}
 
-    public DenominacionModel(Long id, @Size(min = 0, max = 64) String denominacion, String description,
+    public OriginModel(Long id, @Size(min = 0, max = 64) String nombre, String description,
             ClientModel client) {
         this.id = id;
-        this.denominacion = denominacion;
+        this.nombre = nombre;
         this.description = description;
         this.client = client;
     }
@@ -54,12 +54,12 @@ public class DenominacionModel implements Clientelable {
         return id;
     }
 
-    public String getDenominacion() {
-        return denominacion;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setDenominacion(String denominacion) {
-        this.denominacion = denominacion;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescription() {
@@ -86,7 +86,7 @@ public class DenominacionModel implements Clientelable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DenominacionModel other = (DenominacionModel) obj;
+        OriginModel other = (OriginModel) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
