@@ -46,7 +46,6 @@ const init = async () => {
     request = await fetch("/api/v1/origins");
     if (request.ok) {
         origins = await request.json();
-        console.log(origins);
     }
 
     request = await fetch("/api/v1/tipos");

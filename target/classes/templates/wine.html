@@ -1,103 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ nombre }}</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{ nombre }}</title>
 
-    {% load static %}
-    <link rel="icon" type="image/svg" href="{% static "icons/add.svg" %}">
+        <link rel="icon" type="image/svg" href="icons/add.svg" />
 
-    <!-- STYLES -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static "fonts/fonts.css" %}">
-    <link rel="stylesheet" href="{% static "styles/material.css" %}">
-    <link rel="stylesheet" href="{% static "styles/core.css" %}">
-    <link rel="stylesheet" href="{% static "components/transition/transition.css" %}">
-    <link rel="stylesheet" href="{% static "components/dropdown/dropdown.css" %}">
-    <link rel="stylesheet" href="{% static "wine/wine.css" %}">
-    
-    {% load static %}
-    <!-- LIBS -->
-    <script src="{% static "libs/jquery.js" %}"></script>
-    <script src="{% static "libs/material.js" %}"></script>
-    <script src="{% static "libs/anime.js" %}"></script>
-    <!-- COMPONENTS -->
-    <script src="{% static "components/transition/transition.js" %}"></script>
-    <script src="{% static "components/dropdown/dropdown.js" %}"></script>
-    <!-- FRAMEWORK -->
-    <script defer src="{% static "scripts/core.js" %}"></script>
-    <script defer src="{% static "scripts/primitives.js" %}"></script>
-    <script defer src="{% static "scripts/components.js" %}"></script>
-    <script defer src="{% static "scripts/ui.js" %}"></script>
-    <script defer src="{% static "wine/wine.js" %}"></script>
-</head>
-<body>
-    <div class="header">
-        <div class="nav">
-            <div id="nav-action">
-                <div>
-                    <span class="icon">menu</span>
+        <!-- STYLES -->
+        <link rel="stylesheet" href="../../fonts/fonts.css" />
+        <link rel="stylesheet" href="../../styles/material.css" />
+        <link rel="stylesheet" href="../../styles/core.css" />
+        <link
+            rel="stylesheet"
+            href="../../components/transition/transition.css"
+        />
+        <link rel="stylesheet" href="../../components/dropdown/dropdown.css" />
+        <link rel="stylesheet" href="../../wine-page/wine.css" />
+
+        <!-- LIBS -->
+        <script src="../../libs/jquery.js"></script>
+        <script src="../../libs/material.js"></script>
+        <script src="../../libs/anime.js"></script>
+        <!-- COMPONENTS -->
+        <script src="../../components/transition/transition.js"></script>
+        <script src="../../components/dropdown/dropdown.js"></script>
+        <!-- FRAMEWORK -->
+        <script defer src="../../scripts/core.js"></script>
+        <script defer src="../../scripts/primitives.js"></script>
+        <script defer src="../../scripts/components.js"></script>
+        <script defer src="../../scripts/ui.js"></script>
+        <script defer src="../../wine-page/wine.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="nav">
+                <div id="nav-action">
+                    <div>
+                        <span class="icon">menu</span>
+                    </div>
+                </div>
+                <div id="nav-page-title"><h3></h3></div>
+            </div>
+            <div class="foreground">
+                <div class="title">
+                    <h1></h1>
+                </div>
+                <div class="subtitle">
+                    <h3></h3>
                 </div>
             </div>
-            <div id="nav-page-title"><h3></h3></div>
         </div>
-        <div class="foreground">
-            <div class="title">
-                <h1></h1>
+
+        <div class="table data-grid" id="wine">
+            <div class="cell full-width">
+                <h1 class="data" id="purchase_price">0</h1>
+                <h3 class="name">Precio Adquisición</h3>
             </div>
-            <div class="subtitle">
-                <h3></h3>
+            <div class="cell right-sep">
+                <h1 class="data" id="quantity">0</h1>
+                <h3 class="name">Existencias</h3>
+            </div>
+            <div class="cell">
+                <h1 class="data" id="location">0</h1>
+                <h3 class="name">Ubicación</h3>
+            </div>
+            <div class="cell right-sep">
+                <h1 class="data" id="from-year">0</h1>
+                <h3 class="name">Año</h3>
+            </div>
+            <div class="cell">
+                <h1 class="data" id="rating">0</h1>
+                <h3 class="name">Rating</h3>
             </div>
         </div>
-    </div>
 
-    <div class="table data-grid" id="wine">
-        <div class="cell full-width">
-            <h1 class="data" id="selling_price">0</h1>
-            <h3 class="name">PVP Carta</h3>
+        <div class="section" id="delete-wine">
+            <div class="button">
+                <p>Eliminar vino</p>
+            </div>
         </div>
-        <div class="cell right-sep">
-            <h1 class="data" id="quantity">0</h1>
-            <h3 class="name">Existencias</h3>
-        </div>
-        <div class="cell">
-            <h1 class="data" id="location">0</h1>
-            <h3 class="name">Ubicación</h3>
-        </div>
-        <div class="cell right-sep">
-            <h1 class="data" id="purchase_price">0</h1>
-            <h3 class="name">Precio Adquisición</h3>
-        </div>
-        <div class="cell">
-            <h1 class="data" id="theoretical_pvp">0</h1>
-            <h3 class="name">PVP Teórico</h3>
-        </div>
-        <div class="cell right-sep">
-            <h1 class="data" id="adjusted_pvp">0</h1>
-            <h3 class="name">PVP Ajustado</h3>
-        </div>
-        <div class="cell">
-            <h1 class="data" id="lavinia_code">0</h1>
-            <h3 class="name">Código Lavinia</h3>
-        </div>
-    </div>
 
-    <div class="section" id="delete-wine">
-        <div class="button">
-            <p>Eliminar vino</p>
+        <div class="floating bottom">
+            <div class="button raised">
+                <div id="action-edit"><p>Editar</p></div>
+                <div id="action-take"><p>Coger</p></div>
+            </div>
         </div>
-    </div>
-
-    <div class="floating bottom">
-        <div class="button raised">
-            <div id="action-edit"><p>Editar</p></div>
-            <div id="action-take"><p>Coger</p></div>
-        </div>
-    </div>
-
-
-    <data id="data-wine">{{ wine }}</data>
-    <data id="data-preferences">{{ preferences }}</data>
-</body>
+    </body>
 </html>

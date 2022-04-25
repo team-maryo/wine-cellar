@@ -5,18 +5,18 @@ let header = new Header({
 });
 
 let fab_new_wine = new FAB("fab-new-wine", {
-    scroll_on_overflow: true
+    scroll_on_overflow: true,
 });
 
-fab_new_wine.events.on("click", function() {
+fab_new_wine.events.on("click", function () {
     window.location = "/wine/new/";
 });
 
 let nav = new Nav("nav-running-low");
-nav.events.on("nav-inventory", function() {
+nav.events.on("nav-inventory", function () {
     go_inventory();
 });
-nav.events.on("nav-settings", function() {
+nav.events.on("nav-settings", function () {
     go_settings();
 });
 
@@ -28,10 +28,33 @@ function go_inventory() {
     window.location = "/";
 }
 
-let wines = JSON.parse($("data#data-wines").html());
-let preferences = JSON.parse($("data#data-preferences").html());
-let origins = JSON.parse($("data#data-origins").html());
-let tipos = JSON.parse($("data#data-tipos").html());
+let wines;
+let preferences = {
+    notify_on: 5,
+};
+let origins;
+let tipos;
 
-let inventory_search = new Inventory_Search();
-inventory_search.init();
+let inventory_search;
+
+const init = async () => {
+    let request = await fetch("/api/v1/wines");
+    if (request.ok) {
+        wines = await request.json();
+    }
+
+    request = await fetch("/api/v1/origins");
+    if (request.ok) {
+        origins = await request.json();
+    }
+
+    request = await fetch("/api/v1/tipos");
+    if (request.ok) {
+        tipos = await request.json();
+    }
+
+    inventory_search = new Inventory_Search();
+    inventory_search.init();
+};
+
+init();

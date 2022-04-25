@@ -1,6 +1,5 @@
 package com.teamMaryo.wineCellar.models;
 
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -14,16 +13,6 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
-
-//     id_wine = models.AutoField(primary_key=True)
-//     quantity = models.IntegerField(default=0)
-//     nombre = models.CharField(max_length=255, null=True)
-//     lavinia_code = models.CharField(max_length=10, null=True)
-//     purchase_price = models.DecimalField(max_digits=9, decimal_places=4, null=True)
-//     selling_price = models.DecimalField(max_digits=9, decimal_places=4, null=True)
-//     location = models.CharField(max_length=50, null=True)
-//     origin = models.ForeignKey(Origin, on_delete=models.PROTECT)
-//     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
 
 @Entity
 @Table(name= "WINE")

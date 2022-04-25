@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class PageController {
+    
     @Autowired
     private WineService wineService;
 
@@ -30,6 +31,21 @@ public class PageController {
     @GetMapping("/wine/{wineId}")
     public String getWine(@PathVariable("wineId") Long wineId)
     {
-        
+        Long clientId = 1L;
+        if (wineService.exists(clientId, wineId)) {
+            return "wine";
+        } else {
+            return "components";
+        }
+    }
+
+    @GetMapping("/wine/{wineId}/edit/")
+    public String getWineEdit(@PathVariable("wineId") Long wineId) {
+        Long clientId = 1L;
+        if (wineService.exists(clientId, wineId)) {
+            return "wine-edit";
+        } else {
+            return "components";
+        }
     }
 }

@@ -297,6 +297,8 @@ class Form {
             }
         }
 
+        console.log(payload);
+
         if (this.params.post.on_save) {
             this.post(payload);
         }
@@ -308,7 +310,7 @@ class Form {
         let parent = this;
         $.ajax({
             url: this.params.post.url,
-            method: "POST",
+            method: this.params.post.method ? this.params.post.method : "POST",
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(payload),

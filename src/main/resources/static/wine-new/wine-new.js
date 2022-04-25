@@ -46,6 +46,18 @@ const createForm = () => {
         input: "",
     });
 
+    wine_edit_form.add({
+        id: "fromYear",
+        label: "Año*",
+        number: "",
+    });
+
+    wine_edit_form.add({
+        id: "rating",
+        label: "Rating*",
+        number: "",
+    });
+
     for (let origin of origins) {
         origins_dropdown_items.push({
             value: origin.id,
