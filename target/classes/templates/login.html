@@ -3,52 +3,80 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{ nombre }}</title>
+        <title>Login - WineCellar</title>
 
-        <link rel="icon" type="image/svg" href="icons/add.svg" />
+        <link
+            rel="icon"
+            type="image/svg"
+            th:href="@{/resources/icons/add.svg}"
+        />
 
         <!-- STYLES -->
-        <link rel="stylesheet" href="../../fonts/fonts.css" />
-        <link rel="stylesheet" href="../../styles/material.css" />
-        <link rel="stylesheet" href="../../styles/core.css" />
-        <link
-            rel="stylesheet"
-            href="../../components/transition/transition.css"
-        />
-        <link rel="stylesheet" href="../../components/dropdown/dropdown.css" />
-        <link rel="stylesheet" href="../../wine-page/wine.css" />
+        <link rel="stylesheet" th:href="@{/resources/fonts/fonts.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/material.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/core.css}" />
+        <link rel="stylesheet" th:href="@{/resources/login/login.css}" />
 
         <!-- LIBS -->
-        <script src="../../libs/jquery.js"></script>
-        <script src="../../libs/material.js"></script>
-        <script src="../../libs/anime.js"></script>
+        <script th:src="@{/resources/libs/jquery.js}"></script>
+        <script th:src="@{/resources/libs/material.js}"></script>
+        <script th:src="@{/resources/libs/anime.js}"></script>
         <!-- COMPONENTS -->
-        <script src="../../components/transition/transition.js"></script>
-        <script src="../../components/dropdown/dropdown.js"></script>
+        <script
+            th:src="@{/resources/components/transition/transition.js}"
+        ></script>
+        <script th:src="@{/resources/components/dropdown/dropdown.js}"></script>
         <!-- FRAMEWORK -->
-        <script defer src="../../scripts/core.js"></script>
-        <script defer src="../../scripts/primitives.js"></script>
-        <script defer src="../../scripts/components.js"></script>
-        <script defer src="../../scripts/ui.js"></script>
-        <script defer src="../../wine-page/wine.js"></script>
+        <script defer th:src="@{/resources/scripts/core.js}"></script>
+        <script defer th:src="@{/resources/scripts/primitives.js}"></script>
+        <script defer th:src="@{/resources/scripts/components.js}"></script>
+        <script defer th:src="@{/resources/scripts/ui.js}"></script>
+        <script defer th:src="@{/resources/login/login.js}"></script>
     </head>
     <body>
-        <div>
+        <div class="header">
+            <div class="nav">
+                <div id="nav-action">
+                    <div>
+                        <span class="icon">menu</span>
+                    </div>
+                </div>
+                <div id="nav-page-title"><h3></h3></div>
+            </div>
+            <div class="foreground">
+                <div class="title">
+                    <h1></h1>
+                </div>
+                <div class="subtitle">
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+
+        <form th:action="@{/auth/login}" method="post">
             <div class="textbox big">
-                <input type="text" autocomplete="false" placeholder="Usuario" id="username">
+                <input
+                    type="text"
+                    autocomplete="false"
+                    placeholder="Usuario"
+                    name="username"
+                />
             </div>
+
             <div class="textbox big bottom-sep">
-                <input type="password" autocomplete="false" placeholder="Contraseña" id="password">
+                <input
+                    type="password"
+                    autocomplete="false"
+                    placeholder="Contraseña"
+                    name="password"
+                />
             </div>
-        </div>
 
-        <div class="floating bottom">
-            <div class="button raised" id="action-login">
-                <p>Iniciar sesión</p>
+            <div class="floating bottom">
+                <button class="button raised" id="action-login">
+                    <p>Iniciar sesión</p>
+                </button>
             </div>
-        </div>
-
+        </form>
     </body>
-    <link rel="stylesheet" href="{% static "login/login.css" %}">
-    <script defer src="{% static "login/login.js" %}"></script>
 </html>

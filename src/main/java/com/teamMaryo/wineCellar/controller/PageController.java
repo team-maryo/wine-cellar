@@ -4,8 +4,6 @@ import com.teamMaryo.wineCellar.services.UserService;
 import com.teamMaryo.wineCellar.services.WineService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,9 +33,10 @@ public class PageController {
     }
 
     @GetMapping("/wine/{wineId}")
-    public String getWine(@AuthenticationPrincipal User user, @PathVariable("wineId") Long wineId)
+    public String getWine(@PathVariable("wineId") Long wineId)
     {
-        Long userId = userService.retrieveIdFromUsername(user.getUsername());
+        // Long userId = userService.retrieveIdFromUsername(user.getUsername());
+        Long userId = 1L;
         if (wineService.exists(userId, wineId)) {
             return "wine";
         } else {
@@ -46,8 +45,9 @@ public class PageController {
     }
     
     @GetMapping("/wine/{wineId}/edit/")
-    public String getWineEdit(@AuthenticationPrincipal User user, @PathVariable("wineId") Long wineId) {
-        Long userId = userService.retrieveIdFromUsername(user.getUsername());
+    public String getWineEdit(@PathVariable("wineId") Long wineId) {
+        // Long userId = userService.retrieveIdFromUsername(user.getUsername());
+        Long userId = 1L;
         if (wineService.exists(userId, wineId)) {
             return "wine-edit";
         } else {
@@ -58,6 +58,11 @@ public class PageController {
     @GetMapping("/error") 
     public String get404() {
         return "error";
+    }
+
+    @GetMapping("/auth/login")
+    public String login() {
+        return "login";
     }
 
 }

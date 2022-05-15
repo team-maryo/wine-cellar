@@ -1,10 +1,7 @@
 package com.teamMaryo.wineCellar.controller;
 
-
-import java.util.List;
-
-import com.teamMaryo.wineCellar.models.TypeModel;
-import com.teamMaryo.wineCellar.services.TypeService;
+import com.teamMaryo.wineCellar.models.TipoModel;
+import com.teamMaryo.wineCellar.services.TipoService;
 import com.teamMaryo.wineCellar.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,42 +22,49 @@ import org.springframework.web.bind.annotation.RestController;
 public class TipoController {
 
     @Autowired
-    private TypeService tipoService;
+    private TipoService tipoService;
 
     @Autowired
     private UserService userService;
 
 
     @GetMapping("/tipos")
-    public ResponseEntity<Iterable<TypeModel>> retrieveTipos(@AuthenticationPrincipal User user) {
+    public ResponseEntity<Iterable<TipoModel>> retrieveTipos(@AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        Iterable<TypeModel> tipos = tipoService.retrieveAll(userId);
+        Iterable<TipoModel> tipos = tipoService.retrieveAll(userId);
         return ResponseEntity.ok().body(tipos);
     }
 
     @PostMapping("/tipos")
-    public ResponseEntity<TypeModel> createTipo(@RequestBody TypeModel tipo, @AuthenticationPrincipal User user) {
+    public ResponseEntity<TipoModel> createTipo(@RequestBody TipoModel tipo, @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        TypeModel newTipo = tipoService.create(userId, tipo);
+        TipoModel newTipo = tipoService.create(userId, tipo);
         return ResponseEntity.ok().body(newTipo);
     }    
     
     @GetMapping("/tipos/{tipoId}")
-    public ResponseEntity<TypeModel> retrieveTipo(@PathVariable("tipoId") Long tipoId, @AuthenticationPrincipal User user) {
-        Long userId = userService.retrieveIdFromUsername(user.getUsername());;
-        TypeModel tipo = tipoService.retrieve(userId,tipoId);
+    public ResponseEntity<TipoModel> retrieveTipo(
+        @PathVariable("tipoId") Long tipoId, 
+        @AuthenticationPrincipal User user) {
+        Long userId = userService.retrieveIdFromUsername(user.getUsername());
+        TipoModel tipo = tipoService.retrieve(userId,tipoId);
         return ResponseEntity.ok().body(tipo);
     }
 
     @PutMapping("/tipos/{tipoId}")
-    public ResponseEntity<TypeModel> updateWine(@PathVariable("tipoId") Long tipoId, @RequestBody TypeModel newTipo, @AuthenticationPrincipal User user) {
+    public ResponseEntity<TipoModel> updateWine(
+        @PathVariable("tipoId") Long tipoId, 
+        @RequestBody TipoModel newTipo, 
+        @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        TypeModel tipo = tipoService.update(userId,tipoId,newTipo);
+        TipoModel tipo = tipoService.update(userId,tipoId,newTipo);
         return ResponseEntity.ok().body(tipo);
     }
 
     @DeleteMapping("/tipos/{tipoId}")
-    public ResponseEntity<TypeModel> deleteWine(@PathVariable("tipoId") Long tipoId, @AuthenticationPrincipal User user) {
+    public ResponseEntity<TipoModel> deleteTipo(
+        @PathVariable("tipoId") Long tipoId, 
+        @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
         tipoService.destroy(userId, tipoId);
         return ResponseEntity.noContent().build();

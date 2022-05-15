@@ -1,5 +1,10 @@
 package com.teamMaryo.wineCellar.models;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -11,28 +16,38 @@ public class WineModel {
     private Long wineId;
 
     @Column("NOMBRE")
-    private String winename;
+    @Size(max=64)
+    @NotNull
+    private String nombre;
 
     @Column("DESCRIPTION")
+    @Size(max=254)
     private String description;
 
     @Column("QUANTITY")
+    @Min(0)
     private Long quantity;
 
     @Column("PURCHASE_PRICE")
-    private Long price;
+    @Min(0)
+    private float price;
 
     @Column("LOCATION")
+    @Size(max=254)
     private String location;
 
     @Column("FROM_YEAR")
+    @Min(1800)
+    @Max(2300)
     private Long year;
 
     @Column("RATING")
+    @Min(0)
+    @Max(5)
     private Long rating;
 
-    @Column("TYPE_ID")
-    private Long typeId;
+    @Column("TIPO_ID")
+    private Long tipoId;
 
     @Column("ORIGIN_ID")
     private Long originId;
@@ -51,12 +66,12 @@ public class WineModel {
         this.wineId = wineId;
     }
 
-    public String getWinename() {
-        return winename;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setWinename(String winename) {
-        this.winename = winename;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescription() {
@@ -75,11 +90,11 @@ public class WineModel {
         this.quantity = quantity;
     }
 
-    public Long getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -107,12 +122,12 @@ public class WineModel {
         this.rating = rating;
     }
 
-    public Long getTypeId() {
-        return typeId;
+    public Long getTipoId() {
+        return tipoId;
     }
 
-    public void setTypeId(Long typeId) {
-        this.typeId = typeId;
+    public void setTipoId(Long tipoId) {
+        this.tipoId = tipoId;
     }
 
     public Long getOriginId() {

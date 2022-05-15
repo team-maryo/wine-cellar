@@ -3,34 +3,39 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{ nombre }}</title>
+        <title>Vino - WineCellar</title>
 
         <link rel="icon" type="image/svg" href="icons/add.svg" />
 
         <!-- STYLES -->
-        <link rel="stylesheet" href="../../fonts/fonts.css" />
-        <link rel="stylesheet" href="../../styles/material.css" />
-        <link rel="stylesheet" href="../../styles/core.css" />
+        <link rel="stylesheet" th:href="@{/resources/fonts/fonts.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/material.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/core.css}" />
         <link
             rel="stylesheet"
-            href="../../components/transition/transition.css"
+            th:href="@{/resources/components/transition/transition.css}"
         />
-        <link rel="stylesheet" href="../../components/dropdown/dropdown.css" />
-        <link rel="stylesheet" href="../../wine-page/wine.css" />
+        <link
+            rel="stylesheet"
+            th:href="@{/resources/components/dropdown/dropdown.css}"
+        />
+        <link rel="stylesheet" th:href="@{/resources/wine-page/wine.css}" />
 
         <!-- LIBS -->
-        <script src="../../libs/jquery.js"></script>
-        <script src="../../libs/material.js"></script>
-        <script src="../../libs/anime.js"></script>
+        <script th:src="@{/resources/libs/jquery.js}"></script>
+        <script th:src="@{/resources/libs/material.js}"></script>
+        <script th:src="@{/resources/libs/anime.js}"></script>
         <!-- COMPONENTS -->
-        <script src="../../components/transition/transition.js"></script>
-        <script src="../../components/dropdown/dropdown.js"></script>
+        <script
+            th:src="@{/resources/components/transition/transition.js}"
+        ></script>
+        <script th:src="@{/resources/components/dropdown/dropdown.js}"></script>
         <!-- FRAMEWORK -->
-        <script defer src="../../scripts/core.js"></script>
-        <script defer src="../../scripts/primitives.js"></script>
-        <script defer src="../../scripts/components.js"></script>
-        <script defer src="../../scripts/ui.js"></script>
-        <script defer src="../../wine-page/wine.js"></script>
+        <script defer th:src="@{/resources/scripts/core.js}"></script>
+        <script defer th:src="@{/resources/scripts/primitives.js}"></script>
+        <script defer th:src="@{/resources/scripts/components.js}"></script>
+        <script defer th:src="@{/resources/scripts/ui.js}"></script>
+        <script defer th:src="@{/resources/wine-page/wine.js}"></script>
     </head>
     <body>
         <div class="header">
@@ -54,7 +59,7 @@
 
         <div class="table data-grid" id="wine">
             <div class="cell full-width">
-                <h1 class="data" id="purchase_price">0</h1>
+                <h1 class="data" id="price">0</h1>
                 <h3 class="name">Precio Adquisición</h3>
             </div>
             <div class="cell right-sep">
@@ -66,7 +71,7 @@
                 <h3 class="name">Ubicación</h3>
             </div>
             <div class="cell right-sep">
-                <h1 class="data" id="from-year">0</h1>
+                <h1 class="data" id="year">0</h1>
                 <h3 class="name">Año</h3>
             </div>
             <div class="cell">

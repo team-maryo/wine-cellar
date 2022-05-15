@@ -52,14 +52,19 @@ public class OriginController {
     }
 
     @PutMapping("/denominaciones/{denominacionId}")
-    public ResponseEntity<OriginModel> updateWine(@PathVariable("denominacionId") Long denominacionId, @RequestBody OriginModel newDenominacion, @AuthenticationPrincipal User user) {
+    public ResponseEntity<OriginModel> updateWine(
+        @PathVariable("denominacionId") Long denominacionId, 
+        @RequestBody OriginModel newDenominacion,
+        @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
         OriginModel denominacion = denominacionService.update(userId,denominacionId,newDenominacion);
         return ResponseEntity.ok().body(denominacion);
     }
 
     @DeleteMapping("/denominaciones/{denominacionId}")
-    public ResponseEntity<WineModel> deleteWine(@PathVariable("denominacionId") Long denominacionId, @AuthenticationPrincipal User user) {
+    public ResponseEntity<WineModel> deleteWine(
+        @PathVariable("denominacionId") Long denominacionId,
+        @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
         denominacionService.destroy(userId, denominacionId);
         return ResponseEntity.noContent().build();

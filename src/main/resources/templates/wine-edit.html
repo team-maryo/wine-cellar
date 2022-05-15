@@ -3,35 +3,40 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{ nombre }}</title>
+        <title>Editar vino - WineCellar</title>
 
         <!-- STYLES -->
-        <link rel="stylesheet" href="../../../fonts/fonts.css" />
-        <link rel="stylesheet" href="../../../styles/material.css" />
-        <link rel="stylesheet" href="../../../styles/core.css" />
+        <link rel="stylesheet" th:href="@{/resources/fonts/fonts.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/material.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/core.css}" />
         <link
             rel="stylesheet"
-            href="../../../components/transition/transition.css"
+            th:href="@{/resources/components/transition/transition.css}"
         />
         <link
             rel="stylesheet"
-            href="../../../components/dropdown/dropdown.css"
+            th:href="@{/resources/components/dropdown/dropdown.css}"
         />
-        <link rel="stylesheet" href="../../../wine-edit/wine-edit.css" />
+        <link
+            rel="stylesheet"
+            th:href="@{/resources/wine-edit/wine-edit.css}"
+        />
 
         <!-- LIBS -->
-        <script src="../../../libs/jquery.js"></script>
-        <script src="../../../libs/material.js"></script>
-        <script src="../../../libs/anime.js"></script>
+        <script th:src="@{/resources/libs/jquery.js}"></script>
+        <script th:src="@{/resources/libs/material.js}"></script>
+        <script th:src="@{/resources/libs/anime.js}"></script>
         <!-- COMPONENTS -->
-        <script src="../../../components/transition/transition.js"></script>
-        <script src="../../../components/dropdown/dropdown.js"></script>
+        <script
+            th:src="@{/resources/components/transition/transition.js}"
+        ></script>
+        <script th:src="@{/resources/components/dropdown/dropdown.js}"></script>
         <!-- FRAMEWORK -->
-        <script defer src="../../../scripts/core.js"></script>
-        <script defer src="../../../scripts/primitives.js"></script>
-        <script defer src="../../../scripts/components.js"></script>
-        <script defer src="../../../scripts/ui.js"></script>
-        <script defer src="../../../wine-edit/wine-edit.js"></script>
+        <script defer th:src="@{/resources/scripts/core.js}"></script>
+        <script defer th:src="@{/resources/scripts/primitives.js}"></script>
+        <script defer th:src="@{/resources/scripts/components.js}"></script>
+        <script defer th:src="@{/resources/scripts/ui.js}"></script>
+        <script defer th:src="@{/resources/wine-edit/wine-edit.js}"></script>
     </head>
     <body>
         <div class="header">

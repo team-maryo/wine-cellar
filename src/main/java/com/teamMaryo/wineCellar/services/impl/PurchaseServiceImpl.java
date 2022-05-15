@@ -22,8 +22,15 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     @Override
     public PurchaseModel create(Long userId, PurchaseModel purchase) {
-        purchase.setPurchaseId(null);
-        purchase.setUserId(userId);
+        PurchaseModel purchaseModel = retrieve(userId, purchase.getWineId());
+        if (purchaseModel != null) {
+            purchaseModel.incrementCount();
+            return update(userId, purchaseModel.getPurchaseId(), purchaseModel);
+        } else {
+            purchaseModel.setPurchaseId(null);
+            purchaseModel.setUserId(userId);
+        }
+
         return repository.save(purchase);
     }
 

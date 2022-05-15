@@ -1,5 +1,8 @@
 package com.teamMaryo.wineCellar.models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -11,9 +14,12 @@ public class OriginModel {
     private Long originId;
 
     @Column("NOMBRE")
+    @NotNull
+    @Size(max=64)
     private String nombre;
 
     @Column("DESCRIPTION")
+    @Size(max=254)
     private String description;
 
     @Column("USER_ID")

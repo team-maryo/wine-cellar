@@ -1,5 +1,8 @@
 package com.teamMaryo.wineCellar.models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -11,12 +14,18 @@ public class UserModel {
     private Long userId;
 
     @Column("USERNAME")
+    @Size(max=64)
+    @NotNull
     private String username;
 
     @Column("EMAIL")
+    @Size(max=254)
+    @NotNull
     private String email;
 
     @Column("PASSWORD")
+    @Size(max=254)
+    @NotNull
     private String password;
 
     public UserModel() {

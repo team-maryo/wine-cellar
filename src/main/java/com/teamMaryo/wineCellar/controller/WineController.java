@@ -1,6 +1,7 @@
 package com.teamMaryo.wineCellar.controller;
 
 import com.teamMaryo.wineCellar.joins.WineExtendedJoin;
+import com.teamMaryo.wineCellar.models.WineExtendedModel;
 import com.teamMaryo.wineCellar.models.WineModel;
 import com.teamMaryo.wineCellar.services.UserService;
 import com.teamMaryo.wineCellar.services.WineService;
@@ -28,7 +29,7 @@ public class WineController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/join/wines/infoextended")
+    @GetMapping("/extended/wines")
     public ResponseEntity<Iterable<WineExtendedJoin>> retrieveAllInfo(@AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
         Iterable<WineExtendedJoin> tipoWines = wineService.retrieveAllExtended(userId);
@@ -36,35 +37,33 @@ public class WineController {
     }
 
     @GetMapping("/wines")
-    public ResponseEntity<Iterable<WineModel>> retrieveWines(@AuthenticationPrincipal User user) {
+    public ResponseEntity<Iterable<WineExtendedModel>> retrieveWines(@AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        Iterable<WineModel> wines = wineService.retrieveAll(userId);
+        Iterable<WineExtendedModel> wines = wineService.retrieveAll(userId);
         return ResponseEntity.ok().body(wines);
     }
 
     @PostMapping("/wines")
-    public ResponseEntity<WineModel> createWine(@AuthenticationPrincipal User user, @RequestBody WineModel wine) {
+    public ResponseEntity<WineModel> createWine(@RequestBody WineModel wine, @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
         WineModel newWine = wineService.create(userId, wine);
         return ResponseEntity.ok().body(newWine);
     }    
     
     @GetMapping("/wines/{wineId}")
-    public ResponseEntity<WineModel> retrieveWine(
-        @AuthenticationPrincipal User user, 
-        @PathVariable("wineId") Long wineId)
+    public ResponseEntity<WineExtendedModel> retrieveWine(@PathVariable("wineId") Long wineId, @AuthenticationPrincipal User user)
     {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        WineModel wine = wineService.retrieve(userId, wineId);
+        WineExtendedModel wine = wineService.retrieve(userId, wineId);
 
         return ResponseEntity.ok().body(wine);
     }
 
     @PutMapping("/wines/{wineId}")
     public ResponseEntity<WineModel> updateWine(
-        @AuthenticationPrincipal User user, 
         @PathVariable("wineId") Long wineId, 
-        @RequestBody WineModel newWine) 
+        @RequestBody WineModel newWine,
+        @AuthenticationPrincipal User user) 
     {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
         WineModel wine = wineService.update(userId,wineId,newWine);
@@ -73,8 +72,7 @@ public class WineController {
 
     @DeleteMapping("/wines/{wineId}")
     public ResponseEntity<WineModel> deleteWine(
-        @AuthenticationPrincipal User user, 
-        @PathVariable("wineId") Long wineId) 
+        @PathVariable("wineId") Long wineId, @AuthenticationPrincipal User user) 
     {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
         wineService.destroy(userId, wineId);

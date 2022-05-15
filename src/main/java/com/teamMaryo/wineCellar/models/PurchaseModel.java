@@ -1,5 +1,7 @@
 package com.teamMaryo.wineCellar.models;
 
+import javax.validation.constraints.Min;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -11,6 +13,7 @@ public class PurchaseModel {
     private Long purchaseId;
 
     @Column("COUNT")
+    @Min(0)
     private int count;
 
     @Column("WINE_ID")
@@ -52,6 +55,10 @@ public class PurchaseModel {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public void incrementCount() {
+        this.count += 1;
     }
 
     @Override

@@ -62,8 +62,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         UserModel user = repository.findByUsername(username);
-        System.out.println(user.getUsername());
-        System.out.println(username);
         List<GrantedAuthority> authorities = new ArrayList<>();
         UserDetails newUser = new User(user.getUsername(), user.getPassword(), authorities);
         return newUser;
