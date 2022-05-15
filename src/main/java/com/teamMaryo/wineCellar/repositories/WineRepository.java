@@ -1,15 +1,12 @@
 package com.teamMaryo.wineCellar.repositories;
 
-import java.util.List;
+import java.util.Optional;
 
-import com.teamMaryo.wineCellar.models.ClientModel;
 import com.teamMaryo.wineCellar.models.WineModel;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public interface WineRepository extends UserCrudRepository<WineModel, Long> {
-    @Query("select e from WineModel e where e.client=:client and e.id=:wineId")
-    public List<WineModel> exists(ClientModel client, Long wineId);
+public interface WineRepository extends CrudRepository<WineModel, Long> {
+    public Iterable<WineModel> findByUserId(Long userId);
+     public Optional<WineModel> findByUserIdAndWineId(Long userId, Long wineId);
 }

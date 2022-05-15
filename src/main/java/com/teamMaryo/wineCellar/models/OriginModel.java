@@ -1,57 +1,33 @@
 package com.teamMaryo.wineCellar.models;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.Size;
+@Table("ORIGINS")
+public class OriginModel {
+    @Id
+    @Column("ORIGIN_ID")
+    private Long originId;
 
-@Entity
-@Table(name="ORIGIN")
-public class OriginModel implements Clientelable {
-    @Id 
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
-    
-    @Size(min=0, max=64)
-    @Column(name="NOMBRE")
+    @Column("NOMBRE")
     private String nombre;
 
-    @Column(name="DESCRIPTION")
+    @Column("DESCRIPTION")
     private String description;
 
-    @ManyToOne
-    @OnDelete(action=OnDeleteAction.CASCADE)
-    private ClientModel client;
+    @Column("USER_ID")
+    private Long userId;
 
-    public OriginModel() {}
-
-    public OriginModel(Long id, @Size(min = 0, max = 64) String nombre, String description,
-            ClientModel client) {
-        this.id = id;
-        this.nombre = nombre;
-        this.description = description;
-        this.client = client;
-    }
-    public ClientModel getClient() {
-        return client;
-    }
-    public void setClient(ClientModel client) {
-        this.client = client;
+    public OriginModel() {
     }
 
-    public void setId(Long id){
-        this.id = id;
+    public Long getOriginId() {
+        return originId;
     }
 
-    public Long getId() {
-        return id;
+    public void setOriginId(Long originId) {
+        this.originId = originId;
     }
 
     public String getNombre() {
@@ -70,11 +46,19 @@ public class OriginModel implements Clientelable {
         this.description = description;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((originId == null) ? 0 : originId.hashCode());
         return result;
     }
 
@@ -87,12 +71,11 @@ public class OriginModel implements Clientelable {
         if (getClass() != obj.getClass())
             return false;
         OriginModel other = (OriginModel) obj;
-        if (id == null) {
-            if (other.id != null)
+        if (originId == null) {
+            if (other.originId != null)
                 return false;
-        } else if (!id.equals(other.id))
+        } else if (!originId.equals(other.originId))
             return false;
         return true;
     }
 }
-    

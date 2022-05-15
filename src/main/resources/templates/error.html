@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>404 Error</title>
+
+        <!-- STYLES -->
+        <link rel="stylesheet" th:href="@{/fonts/fonts.css}" />
+        <link rel="stylesheet" th:href="@{/styles/material.css}" />
+        <link rel="stylesheet" th:href="@{/styles/core.css}" />
+        <link
+            rel="stylesheet"
+            th:href="@{/components/transition/transition.css}"
+        />
+        <link rel="stylesheet" th:href="@{/components/dropdown/dropdown.css}" />
+        <link rel="stylesheet" th:href="@{/error/error.css}" />
+
+        <!-- LIBS -->
+        <script th:src="@{/libs/jquery.js}"></script>
+        <script th:src="@{/libs/material.js}"></script>
+        <script th:src="@{/libs/anime.js}"></script>
+        <!-- COMPONENTS -->
+        <script th:src="@{/components/transition/transition.js}"></script>
+        <script th:src="@{/components/dropdown/dropdown.js}"></script>
+        <!-- FRAMEWORK -->
+        <script defer th:src="@{/scripts/core.js}"></script>
+        <script defer th:src="@{/scripts/primitives.js}"></script>
+        <script defer th:src="@{/scripts/components.js}"></script>
+        <script defer th:src="@{/scripts/ui.js}"></script>
+        <script defer th:src="@{/inventory/inventory.js}"></script>
+        <script defer th:src="@{/error/error.js}"></script>
+    </head>
+    <body>
+        <div class="header"></div>
+        <br />
+        <br />
+        <div id="lost-img">
+            <img id="lost-img" src =
+            https://imagenpng.com/wp-content/uploads/2020/01/astronautadibujo.jpg>
+        </div>
+
+        <div class="section">
+            <h1 class="title">404</h1>
+            <h2 class="title" t>UH OH! You're lost.</h2>
+            <p>
+                The page you are looking for does not exist. How you got here is
+                a mystery. But you can click the button below to go back to the
+                homepage.
+            </p>
+        </div>
+
+        <div class="button flat" id="home" onclick="go_home()">
+            <p>HOME</p>
+        </div>
+    </body>
+</html>

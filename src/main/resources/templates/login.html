@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{ nombre }}</title>
+
+        <link rel="icon" type="image/svg" href="icons/add.svg" />
+
+        <!-- STYLES -->
+        <link rel="stylesheet" href="../../fonts/fonts.css" />
+        <link rel="stylesheet" href="../../styles/material.css" />
+        <link rel="stylesheet" href="../../styles/core.css" />
+        <link
+            rel="stylesheet"
+            href="../../components/transition/transition.css"
+        />
+        <link rel="stylesheet" href="../../components/dropdown/dropdown.css" />
+        <link rel="stylesheet" href="../../wine-page/wine.css" />
+
+        <!-- LIBS -->
+        <script src="../../libs/jquery.js"></script>
+        <script src="../../libs/material.js"></script>
+        <script src="../../libs/anime.js"></script>
+        <!-- COMPONENTS -->
+        <script src="../../components/transition/transition.js"></script>
+        <script src="../../components/dropdown/dropdown.js"></script>
+        <!-- FRAMEWORK -->
+        <script defer src="../../scripts/core.js"></script>
+        <script defer src="../../scripts/primitives.js"></script>
+        <script defer src="../../scripts/components.js"></script>
+        <script defer src="../../scripts/ui.js"></script>
+        <script defer src="../../wine-page/wine.js"></script>
+    </head>
+    <body>
+        <div>
+            <div class="textbox big">
+                <input type="text" autocomplete="false" placeholder="Usuario" id="username">
+            </div>
+            <div class="textbox big bottom-sep">
+                <input type="password" autocomplete="false" placeholder="Contraseña" id="password">
+            </div>
+        </div>
+
+        <div class="floating bottom">
+            <div class="button raised" id="action-login">
+                <p>Iniciar sesión</p>
+            </div>
+        </div>
+
+    </body>
+    <link rel="stylesheet" href="{% static "login/login.css" %}">
+    <script defer src="{% static "login/login.js" %}"></script>
+</html>

@@ -1,13 +1,11 @@
 package com.teamMaryo.wineCellar.services;
 
-import java.util.List;
-
 import com.teamMaryo.wineCellar.models.OriginModel;
 
 public interface OriginService {
-    List<OriginModel> retrieveAll(Long clientId);
-    OriginModel create(Long clientId, OriginModel denominacion);
-    OriginModel update(Long clientId, Long denominacionId, OriginModel denominacion);
-    OriginModel retrieve(Long clientId, Long denominacionId);
-    void destroy(Long clientId, Long denominacionId);
+    Iterable<OriginModel> retrieveAll(Long userId);
+    OriginModel create(Long userId, OriginModel origin);
+    OriginModel update(Long userId, Long originId, OriginModel origin);
+    OriginModel retrieve(Long userId, Long originId);
+    void destroy(Long userId, Long originId);
 }

@@ -1,19 +1,15 @@
 package com.teamMaryo.wineCellar.services;
 
-import java.util.List;
-
-import com.teamMaryo.wineCellar.joins.DenominacionWineJoin;
-import com.teamMaryo.wineCellar.joins.TipoWineJoin;
+import com.teamMaryo.wineCellar.joins.WineExtendedJoin;
 import com.teamMaryo.wineCellar.models.WineModel;
 
-public interface WineService {
-    List<WineModel> retrieveAll(Long clientId);
-    WineModel create(Long clientId, WineModel wine);
-    WineModel update(Long clientId, Long wineId, WineModel wine);
-    WineModel retrieve(Long clientId, Long wineId);
-    void destroy(Long clientId, Long wineId);
-    boolean exists(Long clientId, Long wineId);
+public interface WineService{
+    Iterable<WineModel> retrieveAll(Long userId);
+    WineModel create(Long userId, WineModel wine);
+    WineModel update(Long userId, Long wineId, WineModel wine);
+    WineModel retrieve(Long userId, Long wineId);
+    boolean exists(Long userId, Long wineId);
+    void destroy(Long userId, Long wineId);
 
-    List<TipoWineJoin> retreiveTipoWines();
-    List<DenominacionWineJoin> retreiveDenominacionWines();
+    Iterable<WineExtendedJoin> retrieveAllExtended(Long userId);
 }
