@@ -1,5 +1,6 @@
 package com.teamMaryo.wineCellar.E2ETests;
 
+import com.teamMaryo.wineCellar.models.WineExtendedModel;
 import com.teamMaryo.wineCellar.models.WineModel;
 import com.teamMaryo.wineCellar.repositories.WineRepository;
 import com.teamMaryo.wineCellar.services.WineService;
@@ -56,7 +57,7 @@ public class WineControllerTest {
         newWine.setUserId(1L);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Basic UGVkcm86MTIzNDU=");
+        headers.add("Authorization", "Basic dXNlcjE6MTIz");
         HttpEntity<WineModel> request = new HttpEntity<>(newWine, headers); //Hago el request
 
 
@@ -75,23 +76,44 @@ public class WineControllerTest {
     //GET
      @Test
     public void TestWinesGet() {
-        Iterable<WineModel> wines = repository.findAll();
+        Iterable<WineExtendedModel> wines = wineService.retrieveAll(1L);
 
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/wines";
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Basic UGVkcm86MTIzNDU=");
+        headers.add("Authorization", "Basic dXNlcjE6MTIz");
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
-
-        ResponseEntity<Iterable<WineModel>> result = restTemplate.exchange(
+        ResponseEntity<Iterable<WineExtendedModel>> result = restTemplate.exchange(
             url,
             HttpMethod.GET,
             entity,
-            new ParameterizedTypeReference<Iterable<WineModel>>(){}
+            new ParameterizedTypeReference<Iterable<WineExtendedModel>>(){}
         );
 
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(result.getBody()).isEqualTo(wines);
+        
+    }
+
+    //GET por Id
+     @Test
+    public void TestWinesGetbyId() {
+        WineExtendedModel wine = wineService.retrieve(1L,2L);
+
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/wines/2";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Basic dXNlcjE6MTIz");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<WineExtendedModel> result = restTemplate.exchange(
+            url,
+            HttpMethod.GET,
+            entity,
+            new ParameterizedTypeReference<WineExtendedModel>(){}
+        );
+
+        then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result.getBody()).isEqualTo(wine);
         
     }
 
@@ -107,16 +129,16 @@ public class WineControllerTest {
         wine.setQuantity(34L);
 
 
-         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/wines/2";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/wines/2";
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Basic UGVkcm86MTIzNDU=");
-        HttpEntity<String> entity = new HttpEntity<>(headers);
+        headers.add("Authorization", "Basic dXNlcjE6MTIz");
+        HttpEntity<WineModel> entity = new HttpEntity<>(wine, headers);
 
-        ResponseEntity<Iterable<WineModel>> result = restTemplate.exchange(
+        ResponseEntity<WineModel> result = restTemplate.exchange(
             url,
             HttpMethod.PUT,
             entity,
-            new ParameterizedTypeReference<Iterable<WineModel>>(){}
+            new ParameterizedTypeReference<WineModel>(){}
         );
 
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -128,22 +150,24 @@ public class WineControllerTest {
     @Test
     public void TestWinesDelete(){
 
-        UserModel user = userService.getUserById("blancadepedr");
+        Iterable<WineExtendedModel> winesBefore = wineService.retrieveAll(1L);
 
-        String url = "http://localhost:"+Integer.toString(port)+"/api/v1/users/blancadepedr";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/wines/2";
         HttpHeaders headers = new HttpHeaders();
-        HttpEntity<UserModel> entity = new HttpEntity<>(user,headers);
+        headers.add("Authorization", "Basic dXNlcjE6MTIz");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
 
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        
-        ResponseEntity<UserModel> result = restTemplate.exchange(
+        ResponseEntity<WineModel> result = restTemplate.exchange(
             url,
             HttpMethod.DELETE,
             entity,
-            new ParameterizedTypeReference<UserModel>() {}
+            new ParameterizedTypeReference<WineModel>(){}
         );
 
+        Iterable<WineExtendedModel> winesAfter = wineService.retrieveAll(1L);
+
         then(result.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+        then(!(winesAfter).equals(winesBefore));
         
     }
     

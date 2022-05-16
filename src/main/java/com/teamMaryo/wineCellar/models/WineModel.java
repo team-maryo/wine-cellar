@@ -150,7 +150,10 @@ public class WineModel {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((wineId == null) ? 0 : wineId.hashCode());
+        result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+        result = prime * result + ((originId == null) ? 0 : originId.hashCode());
+        result = prime * result + ((tipoId == null) ? 0 : tipoId.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
         return result;
     }
 
@@ -163,13 +166,30 @@ public class WineModel {
         if (getClass() != obj.getClass())
             return false;
         WineModel other = (WineModel) obj;
-        if (wineId == null) {
-            if (other.wineId != null)
+        if (nombre == null) {
+            if (other.nombre != null)
                 return false;
-        } else if (!wineId.equals(other.wineId))
+        } else if (!nombre.equals(other.nombre))
+            return false;
+        if (originId == null) {
+            if (other.originId != null)
+                return false;
+        } else if (!originId.equals(other.originId))
+            return false;
+        if (tipoId == null) {
+            if (other.tipoId != null)
+                return false;
+        } else if (!tipoId.equals(other.tipoId))
+            return false;
+        if (userId == null) {
+            if (other.userId != null)
+                return false;
+        } else if (!userId.equals(other.userId))
             return false;
         return true;
     }
+
+   
 
 
 }
