@@ -1,10 +1,9 @@
 /* PAGE HEADER */
 body > .header {
-    background: url(/static/assets/settings.svg);
+    background: url(/resources/assets/settings.svg);
     background-position: 9rem 4rem;
     background-size: 60%;
     background-repeat: no-repeat;
-
 }
 
 /* PAGE ON COMPUTER */
@@ -12,5 +11,4 @@ body > .header {
     body > .header {
         background-position: 9rem 6rem;
     }
-    
 }

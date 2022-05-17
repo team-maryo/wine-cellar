@@ -27,6 +27,12 @@ public class PurchaseController{
     @Autowired 
     UserService userService;
 
+    @GetMapping("/extended/purchases")
+    public ResponseEntity<Iterable<PurchaseExtendedModel>> retrievePurchaseExtended(@AuthenticationPrincipal User user) {
+        Long userId = userService.retrieveIdFromUsername(user.getUsername());
+        return ResponseEntity.ok().body(service.retrieveAllExtended(userId));
+    }
+
     @GetMapping("/purchases")
     public ResponseEntity<Iterable<PurchaseModel>> retrieveCompras(@AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
@@ -46,6 +52,13 @@ public class PurchaseController{
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
         PurchaseModel compra = service.retrieve(userId,purchaseId);
         return ResponseEntity.ok().body(compra);
+    }
+
+    @GetMapping("/extended/purchases/{purchaseId}")
+    public ResponseEntity<PurchaseExtendedModel> retrieveExtendedPurchase(@PathVariable("purchaseId") Long purchaseId, @AuthenticationPrincipal User user) {
+        Long userId = userService.retrieveIdFromUsername(user.getUsername());
+        PurchaseExtendedModel purchase = service.retrieveExtended(userId,purchaseId);
+        return ResponseEntity.ok().body(purchase);
     }
 
     @PutMapping("/purchases/{purchaseId}")

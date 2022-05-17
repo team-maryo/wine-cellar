@@ -25,18 +25,37 @@ public class UserServiceImpl implements UserService {
     public UserModel create(UserModel user){
         // Ensure that the user is non existant
         user.setUserId(null);
-        
-        UserModel createdUser = repository.save(user);
-        return createdUser;
+        UserModel otherUser = retrieve(user.getUsername());
+
+        if (otherUser != null) {
+            UserModel createdUser = repository.save(user);
+            return createdUser;
+        } else {
+            return null;
+        }        
     }
     
     @Override
-    public UserModel update(Long userId, UserModel user) {
-        if (!userId.equals(user.getUserId())) return user;
+    public UserModel update(String username, UserModel user) {
+        UserModel oldUser = retrieve(username);
+        user.setUserId(oldUser.getUserId());
+        user.setUsername(oldUser.getUsername());
+        user.setPassword(oldUser.getPassword());
         
         UserModel updatedUser = repository.save(user);
         return updatedUser;
     } 
+
+    @Override
+    public UserModel updatePassword(String username, UserModel user) {
+        UserModel oldUser = retrieve(username);
+        user.setUserId(oldUser.getUserId());
+        user.setUsername(oldUser.getUsername());
+        user.setEmail(oldUser.getEmail());
+
+        UserModel updateUser = repository.save(user);
+        return updateUser;
+    }
 
     @Override
     public UserModel retrieve(String username) {

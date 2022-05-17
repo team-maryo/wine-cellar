@@ -1,5 +1,6 @@
 package com.teamMaryo.wineCellar.controller;
 
+import com.teamMaryo.wineCellar.services.PurchaseService;
 import com.teamMaryo.wineCellar.services.UserService;
 import com.teamMaryo.wineCellar.services.WineService;
 
@@ -17,6 +18,9 @@ public class PageController {
     private WineService wineService;
 
     @Autowired
+    private PurchaseService purchaseService;
+
+    @Autowired
     private UserService userService;
 
     @GetMapping("/")
@@ -27,6 +31,27 @@ public class PageController {
     @GetMapping("/running-low")
     public String getRunningLow() {
         return "running-low";
+    }
+
+    @GetMapping("/settings")
+    public String getSettings() {
+        return "settings";
+    }
+
+    @GetMapping("/purchases")
+    public String getPurchases() {
+        return "purchases";
+    }
+
+    @GetMapping("/purchases/{purchaseId}")
+    public String getPurchase(@AuthenticationPrincipal User user, @PathVariable("purchaseId") Long purchaseId)
+    {
+        Long userId = userService.retrieveIdFromUsername(user.getUsername());
+        if (purchaseService.exists(userId, purchaseId)) {
+            return "purchase";
+        } else {
+            return "error";
+        }
     }
 
     @GetMapping("/wine/new")
@@ -41,7 +66,7 @@ public class PageController {
         if (wineService.exists(userId, wineId)) {
             return "wine";
         } else {
-            return "components";
+            return "error";
         }
     }
     
@@ -51,7 +76,7 @@ public class PageController {
         if (wineService.exists(userId, wineId)) {
             return "wine-edit";
         } else {
-            return "components";
+            return "error";
         }
     }
 

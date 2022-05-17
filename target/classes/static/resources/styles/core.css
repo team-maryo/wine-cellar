@@ -478,6 +478,16 @@ span.icon {
     flex-direction: row;
 }
 
+.table.space-between {
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.table.space-between > h1:last-child {
+    text-align: right;
+}
+
 .table > .cell {
     display: flex;
     align-content: center;

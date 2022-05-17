@@ -18,10 +18,6 @@ public class TipoModel {
     @NotNull
     private String nombre;
 
-    @Column("DESCRIPTION")
-    @Size(max=254)
-    private String description;
-
     @Column("USER_ID")
     private Long userId;
 
@@ -34,14 +30,6 @@ public class TipoModel {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Long getUserId() {

@@ -20,6 +20,14 @@ nav.events.on("nav-settings", function () {
     go_settings();
 });
 
+nav.events.on("nav-purchases", function () {
+    go_purchases();
+});
+
+function go_purchases() {
+    window.location = "/purchases/";
+}
+
 function go_settings() {
     window.location = "/settings/";
 }

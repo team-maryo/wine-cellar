@@ -13,11 +13,15 @@ fab_new_wine.events.on("click", function () {
 });
 
 let nav = new Nav("nav-inventory");
+
 nav.events.on("nav-running-low", function () {
     go_running_low();
 });
 nav.events.on("nav-settings", function () {
     go_settings();
+});
+nav.events.on("nav-purchases", function () {
+    go_purchases();
 });
 
 function go_settings() {
@@ -26,6 +30,10 @@ function go_settings() {
 
 function go_running_low() {
     window.location = "/running-low/";
+}
+
+function go_purchases() {
+    window.location = "/purchases/";
 }
 
 let wines;

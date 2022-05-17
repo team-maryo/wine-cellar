@@ -29,6 +29,12 @@ const createForm = () => {
     });
 
     wine_edit_form.add({
+        id: "description",
+        label: "Descripción",
+        input: "",
+    });
+
+    wine_edit_form.add({
         id: "quantity",
         label: "Existencias*",
         number: "",

@@ -297,8 +297,6 @@ class Form {
             }
         }
 
-        console.log(payload);
-
         if (this.params.post.on_save) {
             this.post(payload);
         }

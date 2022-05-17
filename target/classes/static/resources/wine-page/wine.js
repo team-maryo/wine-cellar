@@ -374,4 +374,20 @@ function check_quantity() {
     }
 }
 
+$("#action-purchase").on("click", function () {
+    let payload = {
+        wineId: wine.wineId,
+    };
+    $.ajax({
+        url: "/api/v1/purchases/",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(payload),
+        method: "POST",
+        success: function (response) {
+            window.location = "/purchases/" + response.purchaseId + "/";
+        },
+    });
+});
+
 init();

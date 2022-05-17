@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Nuevo vino - WineCellar</title>
+        <title>Inventario - WineCellar</title>
 
         <!-- STYLES -->
         <link rel="stylesheet" th:href="@{/resources/fonts/fonts.css}" />
@@ -17,7 +17,10 @@
             rel="stylesheet"
             th:href="@{/resources/components/dropdown/dropdown.css}"
         />
-        <link rel="stylesheet" th:href="@{/resources/wine-new/wine-new.css}" />
+        <link
+            rel="stylesheet"
+            th:href="@{/resources/purchases-page/purchases.css}"
+        />
 
         <!-- LIBS -->
         <script th:src="@{/resources/libs/jquery.js}"></script>
@@ -33,7 +36,10 @@
         <script defer th:src="@{/resources/scripts/primitives.js}"></script>
         <script defer th:src="@{/resources/scripts/components.js}"></script>
         <script defer th:src="@{/resources/scripts/ui.js}"></script>
-        <script defer th:src="@{/resources/wine-new/wine-new.js}"></script>
+        <script
+            defer
+            th:src="@{/resources/purchases-page/purchases.js}"
+        ></script>
     </head>
     <body>
         <div class="header">
@@ -55,12 +61,42 @@
             </div>
         </div>
 
-        <div class="form" id="wine-new"></div>
+        <div class="search-bar" id="purchase-search">
+            <div class="textbox bottom-sep">
+                <input type="text" placeholder="Buscar entre el inventario" />
+            </div>
+            <div class="clear">
+                <span class="icon">close</span>
+            </div>
+        </div>
 
-        <div class="floating bottom">
-            <div class="button raised">
-                <div id="action-close"><p>Cerrar</p></div>
-                <div id="action-save"><p>Guardar</p></div>
+        <div id="purchase-cards"></div>
+
+        <div class="space"></div>
+
+        <div class="fab" id="fab-new-wine">
+            <div>
+                <span class="icon">add</span>
+            </div>
+        </div>
+
+        <div class="nav">
+            <div class="nav-item" id="nav-purchases">
+                <span class="icon">add_shopping_cart</span>
+                <p>Compras</p>
+            </div>
+            <div class="nav-item" id="nav-running-low">
+                <span class="icon">add</span>
+                <p>Reponer</p>
+            </div>
+            <div class="nav-item" id="nav-inventory">
+                <span class="icon">view_agenda</span>
+                <p>Inventario</p>
+            </div>
+
+            <div class="nav-item" id="nav-settings">
+                <span class="icon">settings</span>
+                <p>Ajustes</p>
             </div>
         </div>
     </body>

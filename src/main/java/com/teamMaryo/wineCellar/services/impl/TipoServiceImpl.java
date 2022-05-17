@@ -28,14 +28,8 @@ public class TipoServiceImpl implements TipoService {
 
     @Override
     public TipoModel update(Long userId, Long tipoId, TipoModel tipo) {
-        if (!tipo.getUserId().equals(userId)) {
-            return null;
-        }
-
-        if (!tipo.getTipoId().equals(tipoId)) {
-            return null;
-        }
-
+        tipo.setUserId(userId);
+        tipo.setTipoId(tipoId);
         return repository.save(tipo);
     }
 

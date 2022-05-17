@@ -28,14 +28,8 @@ public class OriginServiceImpl implements OriginService {
 
     @Override
     public OriginModel update(Long userId, Long originId, OriginModel origin) {
-        if (!origin.getUserId().equals(userId)) {
-            return null;
-        }
-
-        if (!origin.getOriginId().equals(originId)) {
-            return null;
-        }
-
+        origin.setOriginId(originId);
+        origin.setUserId(userId);
         return repository.save(origin);
     }
 

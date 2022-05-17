@@ -45,7 +45,6 @@ public class OriginControllerTest {
        
         OriginModel newOrigin = new OriginModel();
         newOrigin.setNombre("Rias Baixas");
-        newOrigin.setDescription("Fuerte");
         newOrigin.setUserId(1L);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic dXNlcjE6MTIz");
@@ -92,7 +91,7 @@ public class OriginControllerTest {
     public void TestOriginsGetbyId() {
         OriginModel origen = service.retrieve(1L,1L);
 
-        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/denominaciones/1";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/origins/1";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic dXNlcjE6MTIz");
         HttpEntity<String> entity = new HttpEntity<>(headers);
@@ -118,10 +117,9 @@ public class OriginControllerTest {
 
         OriginModel origin = originOptional.get();
         origin.setNombre("Chrome");
-        origin.setDescription("Afrutado");
 
 
-        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/denominaciones/2";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/origins/2";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic dXNlcjE6MTIz");
         HttpEntity<OriginModel> entity = new HttpEntity<>(origin,headers);
@@ -144,7 +142,7 @@ public class OriginControllerTest {
 
         Iterable<OriginModel> originsBefore = service.retrieveAll(1L);
 
-        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/denominaciones/2";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/origins/2";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic dXNlcjE6MTIz");
         HttpEntity<String> entity = new HttpEntity<>(headers);

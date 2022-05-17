@@ -45,7 +45,6 @@ public class TipoControllerTest {
        
         TipoModel newTipo = new TipoModel();
         newTipo.setNombre("prueba");
-        newTipo.setDescription("Fresco");
         newTipo.setUserId(1L);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic dXNlcjE6MTIz");
@@ -118,7 +117,6 @@ public class TipoControllerTest {
 
         TipoModel tipo = tipoOptional.get();
         tipo.setNombre("Chrome");
-        tipo.setDescription("Afrutado");
 
 
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/tipos/2";

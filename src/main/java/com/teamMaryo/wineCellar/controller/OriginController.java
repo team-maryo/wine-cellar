@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OriginController {
 
     @Autowired
-    private OriginService denominacionService;
+    private OriginService service;
 
     @Autowired
     private UserService userService;
@@ -33,40 +33,40 @@ public class OriginController {
     @GetMapping("/origins")
     public ResponseEntity<Iterable<OriginModel>> retrieveDenominaciones(@AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        Iterable<OriginModel> denominaciones = denominacionService.retrieveAll(userId);
+        Iterable<OriginModel> denominaciones = service.retrieveAll(userId);
         return ResponseEntity.ok().body(denominaciones);
     }
 
     @PostMapping("/origins")
     public ResponseEntity<OriginModel> createDenominacion(@RequestBody OriginModel denominacion, @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        OriginModel newDenominacion = denominacionService.create(userId, denominacion);
+        OriginModel newDenominacion = service.create(userId, denominacion);
         return ResponseEntity.ok().body(newDenominacion);
     }    
     
-    @GetMapping("/denominaciones/{denominacionId}")
-    public ResponseEntity<OriginModel> retrieveWine(@PathVariable("denominacionId") Long denominacionId, @AuthenticationPrincipal User user) {
+    @GetMapping("/origins/{originId}")
+    public ResponseEntity<OriginModel> retrieveWine(@PathVariable("originId") Long originId, @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        OriginModel denominacion = denominacionService.retrieve(userId,denominacionId);
+        OriginModel denominacion = service.retrieve(userId,originId);
         return ResponseEntity.ok().body(denominacion);
     }
 
-    @PutMapping("/denominaciones/{denominacionId}")
+    @PutMapping("/origins/{originId}")
     public ResponseEntity<OriginModel> updateWine(
-        @PathVariable("denominacionId") Long denominacionId, 
+        @PathVariable("originId") Long originId, 
         @RequestBody OriginModel newDenominacion,
         @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        OriginModel denominacion = denominacionService.update(userId,denominacionId,newDenominacion);
+        OriginModel denominacion = service.update(userId,originId,newDenominacion);
         return ResponseEntity.ok().body(denominacion);
     }
 
-    @DeleteMapping("/denominaciones/{denominacionId}")
+    @DeleteMapping("/origins/{originId}")
     public ResponseEntity<WineModel> deleteWine(
-        @PathVariable("denominacionId") Long denominacionId,
+        @PathVariable("originId") Long originId,
         @AuthenticationPrincipal User user) {
         Long userId = userService.retrieveIdFromUsername(user.getUsername());
-        denominacionService.destroy(userId, denominacionId);
+        service.destroy(userId, originId);
         return ResponseEntity.noContent().build();
     }
 }

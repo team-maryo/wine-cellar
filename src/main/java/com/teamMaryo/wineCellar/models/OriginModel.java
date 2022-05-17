@@ -18,10 +18,6 @@ public class OriginModel {
     @Size(max=64)
     private String nombre;
 
-    @Column("DESCRIPTION")
-    @Size(max=254)
-    private String description;
-
     @Column("USER_ID")
     private Long userId;
 
@@ -42,14 +38,6 @@ public class OriginModel {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Long getUserId() {

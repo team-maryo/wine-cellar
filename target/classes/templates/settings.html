@@ -1,147 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajustes</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ajustes</title>
 
-    <!-- STYLES -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static "fonts/fonts.css" %}">
-    <link rel="stylesheet" href="{% static "styles/material.css" %}">
-    <link rel="stylesheet" href="{% static "styles/core.css" %}">
-    <link rel="stylesheet" href="{% static "components/transition/transition.css" %}">
-    <link rel="stylesheet" href="{% static "components/dropdown/dropdown.css" %}">
-    <link rel="stylesheet" href="{% static "settings/settings.css" %}">
-    
-    {% load static %}
-    <!-- LIBS -->
-    <script src="{% static "libs/jquery.js" %}"></script>
-    <script src="{% static "libs/material.js" %}"></script>
-    <script src="{% static "libs/anime.js" %}"></script>
-    <!-- COMPONENTS -->
-    <script src="{% static "components/transition/transition.js" %}"></script>
-    <script src="{% static "components/dropdown/dropdown.js" %}"></script>
-    <!-- FRAMEWORK -->
-    <script defer src="{% static "scripts/core.js" %}"></script>
-    <script defer src="{% static "scripts/primitives.js" %}"></script>
-    <script defer src="{% static "scripts/components.js" %}"></script>
-    <script defer src="{% static "scripts/ui.js" %}"></script>
-    <script defer src="{% static "settings/settings.js" %}"></script>
-</head>
-<body>
-    <div class="header">
-        <div class="nav">
-            <div id="nav-action">
-                <div>
-                    <span class="icon">menu</span>
+        <!-- STYLES -->
+        <link rel="stylesheet" th:href="@{/resources/fonts/fonts.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/material.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/core.css}" />
+        <link
+            rel="stylesheet"
+            th:href="@{/resources/components/transition/transition.css}"
+        />
+        <link
+            rel="stylesheet"
+            th:href="@{/resources/components/dropdown/dropdown.css}"
+        />
+        <link rel="stylesheet" th:href="@{/resources/settings/settings.css}" />
+
+        <!-- LIBS -->
+        <script th:src="@{/resources/libs/jquery.js}"></script>
+        <script th:src="@{/resources/libs/material.js}"></script>
+        <script th:src="@{/resources/libs/anime.js}"></script>
+        <!-- COMPONENTS -->
+        <script
+            th:src="@{/resources/components/transition/transition.js}"
+        ></script>
+        <script th:src="@{/resources/components/dropdown/dropdown.js}"></script>
+        <!-- FRAMEWORK -->
+        <script defer th:src="@{/resources/scripts/core.js}"></script>
+        <script defer th:src="@{/resources/scripts/primitives.js}"></script>
+        <script defer th:src="@{/resources/scripts/components.js}"></script>
+        <script defer th:src="@{/resources/scripts/ui.js}"></script>
+        <script defer th:src="@{/resources/settings/settings.js}"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="nav">
+                <div id="nav-action">
+                    <div>
+                        <span class="icon">menu</span>
+                    </div>
+                </div>
+                <div id="nav-page-title"><h3></h3></div>
+            </div>
+            <div class="foreground">
+                <div class="title">
+                    <h1></h1>
+                </div>
+                <div class="subtitle">
+                    <h3></h3>
                 </div>
             </div>
-            <div id="nav-page-title"><h3></h3></div>
         </div>
-        <div class="foreground">
-            <div class="title">
-                <h1></h1>
+
+        <div class="form" id="preferences-form"></div>
+
+        <div class="section title">
+            <h1 class="title">Denominaciones</h1>
+        </div>
+
+        <div class="form" id="origin-form"></div>
+
+        <div class="section">
+            <h2 class="title">Nuevas denominaciones</h2>
+            <div class="button" id="action-add-origin">
+                <p>Añadir denominación</p>
             </div>
-            <div class="subtitle">
-                <h3></h3>
+        </div>
+
+        <div class="section title">
+            <h1 class="title">Tipos</h1>
+        </div>
+
+        <div class="form" id="tipos-form"></div>
+
+        <div class="section">
+            <h2 class="title">Nuevos tipos</h2>
+            <div class="button" id="action-add-tipo">
+                <p>Añadir tipo</p>
             </div>
         </div>
-    </div>
-    
-    <div class="section title">
-        <h1 class="title">Carta</h1>
-    </div>
 
-    <div class="section">
-        <div class="button" id="action-print">
-            <p>Imprimir</p>
+        <div class="section title">
+            <h1 class="title">Tu usuario</h1>
         </div>
-    </div>
 
-    <div class="section title">
-        <h1 class="title">Preferencias</h1>
-    </div>
+        <div class="form" id="user-form"></div>
 
-    <div class="form" id="preferences-form"></div>
-
-    <div class="section title">
-        <h1 class="title">Denominaciones</h1>
-    </div>
-
-    <div class="form" id="origin-form"></div>
-
-    <div class="section">
-        <h2 class="title">Nuevas denominaciones</h2>
-        <div class="button" id="action-add-origin">
-            <p>Añadir denominación</p>
+        <div class="section">
+            <div class="button" id="action-user-save">
+                <p>Guardar</p>
+            </div>
+            <div class="button" id="action-change-password">
+                <p>Cambiar la contraseña</p>
+            </div>
+            <div class="button" id="action-logout">
+                <p>Cerrar sesión</p>
+            </div>
         </div>
-    </div>
 
-    <div class="section title">
-        <h1 class="title">Tipos</h1>
-    </div>
+        <div class="space"></div>
 
-    <div class="form" id="tipos-form"></div>
-
-    <div class="section">
-        <h2 class="title">Nuevos tipos</h2>
-        <div class="button" id="action-add-tipo">
-            <p>Añadir tipo</p>
+        <div class="fab" id="fab-undo">
+            <div>
+                <span class="icon">undo</span>
+            </div>
         </div>
-    </div>
 
-    <div class="section title">
-        <h1 class="title">Tu usuario</h1>
-    </div>
+        <div class="nav">
+            <div class="nav-item" id="nav-purchases">
+                <span class="icon">add_shopping_cart</span>
+                <p>Compras</p>
+            </div>
+            <div class="nav-item" id="nav-running-low">
+                <span class="icon">add</span>
+                <p>Reponer</p>
+            </div>
+            <div class="nav-item" id="nav-inventory">
+                <span class="icon">view_agenda</span>
+                <p>Inventario</p>
+            </div>
 
-    <div class="form" id="user-form"></div>
-
-    <div class="section">
-        <div class="button" id="action-change-password">
-            <p>Cambiar la contraseña</p>
+            <div class="nav-item" id="nav-settings">
+                <span class="icon">settings</span>
+                <p>Ajustes</p>
+            </div>
         </div>
-        <div class="button" id="action-logout">
-            <p>Cerrar sesión</p>
-        </div>
-    </div>
-
-    <div class="section title" id="invite-user-title">
-        <h1 class="title">Nuevos usuarios</h1>
-    </div>
-    <div class="section">
-        <div class="button" id="invite-user">
-            <p>Invitar usuario</p>
-        </div>
-    </div>
-
-    <div class="space"></div>
-
-    <div class="fab" id="fab-undo">
-        <div>
-            <span class="icon">undo</span>
-        </div>
-    </div>
-
-    <div class="nav">
-        <div class="nav-item" id="nav-running-low">
-            <span class="icon">add_shopping_cart</span>
-            <p>Reponer</p>
-        </div>
-        <div class="nav-item" id="nav-inventory">
-            <span class="icon">view_agenda</span>
-            <p>Inventario</p>
-        </div>
-        
-        <div class="nav-item" id="nav-settings">
-            <span class="icon">settings</span>
-            <p>Ajustes</p>
-        </div>
-    </div>
-
-    <data id="data-origins">{{ origins }}</data>
-    <data id="data-tipos">{{ tipos }}</data>
-    <data id="data-preferences">{{ preferences }}</data>
-    <data id="data-user">{{ user }}</data>
-</body>
+    </body>
 </html>

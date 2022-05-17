@@ -38,7 +38,14 @@ public class UserController {
 
     @PutMapping("/users")
     public ResponseEntity<UserModel> updateUser(@AuthenticationPrincipal User user, @RequestBody UserModel userModel) {
-        Long userId = service.retrieveIdFromUsername(user.getUsername());
-        return ResponseEntity.ok().body(service.update(userId, userModel));
+        return ResponseEntity.ok().body(service.update(user.getUsername(), userModel));
+    }
+
+    @PutMapping("/users/password")
+    public ResponseEntity<UserModel> updatePassword(@AuthenticationPrincipal User user, @RequestBody UserModel userModel) {
+        String hashedPassword = passwordEncoder.encode(userModel.getPassword());
+        userModel.setPassword(hashedPassword);
+        
+        return ResponseEntity.ok().body(service.updatePassword(user.getUsername(), userModel));
     }
 }

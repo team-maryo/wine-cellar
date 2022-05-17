@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Nuevo vino - WineCellar</title>
+        <title>Compra - WineCellar</title>
+
+        <link rel="icon" type="image/svg" href="icons/add.svg" />
 
         <!-- STYLES -->
         <link rel="stylesheet" th:href="@{/resources/fonts/fonts.css}" />
@@ -17,7 +19,7 @@
             rel="stylesheet"
             th:href="@{/resources/components/dropdown/dropdown.css}"
         />
-        <link rel="stylesheet" th:href="@{/resources/wine-new/wine-new.css}" />
+        <link rel="stylesheet" th:href="@{/resources/purchase/purchase.css}" />
 
         <!-- LIBS -->
         <script th:src="@{/resources/libs/jquery.js}"></script>
@@ -33,7 +35,7 @@
         <script defer th:src="@{/resources/scripts/primitives.js}"></script>
         <script defer th:src="@{/resources/scripts/components.js}"></script>
         <script defer th:src="@{/resources/scripts/ui.js}"></script>
-        <script defer th:src="@{/resources/wine-new/wine-new.js}"></script>
+        <script defer th:src="@{/resources/purchase/purchase.js}"></script>
     </head>
     <body>
         <div class="header">
@@ -55,12 +57,22 @@
             </div>
         </div>
 
-        <div class="form" id="wine-new"></div>
+        <div class="table data-grid" id="purchase">
+            <div class="cell full-width">
+                <h1 class="data" id="count">0</h1>
+                <h3 class="name">Unidades a comprar</h3>
+            </div>
+        </div>
+
+        <div class="section" id="delete-purchase">
+            <div class="button">
+                <p>Eliminar compra</p>
+            </div>
+        </div>
 
         <div class="floating bottom">
             <div class="button raised">
-                <div id="action-close"><p>Cerrar</p></div>
-                <div id="action-save"><p>Guardar</p></div>
+                <div id="action-add-one"><p>Comprar 1 más</p></div>
             </div>
         </div>
     </body>
