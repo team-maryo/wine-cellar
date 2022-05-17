@@ -1,0 +1,81 @@
+@page 
+{
+    size:  A4 portrait;   /* auto is the initial value */
+    margin-top: 10mm;
+    margin-right: 20mm;
+    margin-bottom: 25mm;
+    margin-left: 15mm;
+    
+    @bottom-center {
+        content: counter(page);
+        text-transform: uppercase;
+
+        font-family: 'Roboto';
+        font-size: 1rem;
+    }
+}
+
+/* GENERAL */
+h1.title {
+    font-family: 'Montserrat';
+    font-size: 2.125rem;
+    letter-spacing: 0.015625rem;
+
+    color: var(--black);
+}
+
+h2.title {
+    font-family: 'Montserrat';
+    font-size: 1.5rem;
+    letter-spacing: 0rem;
+
+    color: var(--black);
+}
+
+h3.subtitle {
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    font-size: 1rem;
+    letter-spacing: 0.00625rem;
+
+    color: var(--black);
+}
+
+p.caption {
+    font-family: 'Roboto';
+    font-size: 0.75rem;
+    letter-spacing: 0.4px;
+}
+
+p {
+    font-family: 'Roboto';
+    font-size: 1rem;
+}
+
+.origin {
+    page-break-before: always;
+    page-break-after: avoid;
+}
+
+.wines {
+    page-break-inside: avoid;
+    display: flex;
+    flex-direction: column;
+}
+
+.wines > .wine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    page-break-inside: avoid;
+}
+
+.wines > .wine > .nombre {
+    max-width: 80%;
+}
+
+.wines > .wine > .price {
+    max-width: 20%;
+}

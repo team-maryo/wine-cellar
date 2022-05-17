@@ -65,7 +65,9 @@ public class PurchaseModel {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((purchaseId == null) ? 0 : purchaseId.hashCode());
+        result = prime * result + count;
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        result = prime * result + ((wineId == null) ? 0 : wineId.hashCode());
         return result;
     }
 
@@ -78,11 +80,20 @@ public class PurchaseModel {
         if (getClass() != obj.getClass())
             return false;
         PurchaseModel other = (PurchaseModel) obj;
-        if (purchaseId == null) {
-            if (other.purchaseId != null)
+        if (count != other.count)
+            return false;
+        if (userId == null) {
+            if (other.userId != null)
                 return false;
-        } else if (!purchaseId.equals(other.purchaseId))
+        } else if (!userId.equals(other.userId))
+            return false;
+        if (wineId == null) {
+            if (other.wineId != null)
+                return false;
+        } else if (!wineId.equals(other.wineId))
             return false;
         return true;
     }
+
+    
 }

@@ -101,4 +101,29 @@ public class WineExtendedModel {
     public String toString() {
         return "WineExtendedModel [nombre=" + nombre + ", wineId=" + wineId + "]";
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((wineId == null) ? 0 : wineId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        WineExtendedModel other = (WineExtendedModel) obj;
+        if (wineId == null) {
+            if (other.wineId != null)
+                return false;
+        } else if (!wineId.equals(other.wineId))
+            return false;
+        return true;
+    }
 }

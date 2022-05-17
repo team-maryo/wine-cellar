@@ -1,0 +1,4 @@
+/* PAGE HEADER */
+body > .header {
+    border-bottom: 0px solid var(--separator);
+}

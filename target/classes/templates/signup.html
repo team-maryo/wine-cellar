@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login - WineCellar</title>
+
+        <link
+            rel="icon"
+            type="image/svg"
+            th:href="@{/resources/icons/add.svg}"
+        />
+
+        <!-- STYLES -->
+        <link rel="stylesheet" th:href="@{/resources/fonts/fonts.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/material.css}" />
+        <link rel="stylesheet" th:href="@{/resources/styles/core.css}" />
+        <link rel="stylesheet" th:href="@{/resources/signup/signup.css}" />
+
+        <!-- LIBS -->
+        <script th:src="@{/resources/libs/jquery.js}"></script>
+        <script th:src="@{/resources/libs/material.js}"></script>
+        <script th:src="@{/resources/libs/anime.js}"></script>
+        <!-- COMPONENTS -->
+        <script
+            th:src="@{/resources/components/transition/transition.js}"
+        ></script>
+        <script th:src="@{/resources/components/dropdown/dropdown.js}"></script>
+        <!-- FRAMEWORK -->
+        <script defer th:src="@{/resources/scripts/core.js}"></script>
+        <script defer th:src="@{/resources/scripts/primitives.js}"></script>
+        <script defer th:src="@{/resources/scripts/components.js}"></script>
+        <script defer th:src="@{/resources/scripts/ui.js}"></script>
+        <script defer th:src="@{/resources/signup/signup.js}"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="nav">
+                <div id="nav-action">
+                    <div>
+                        <span class="icon">menu</span>
+                    </div>
+                </div>
+                <div id="nav-page-title"><h3></h3></div>
+            </div>
+            <div class="foreground">
+                <div class="title">
+                    <h1></h1>
+                </div>
+                <div class="subtitle">
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="form" id="user-new"></div>
+
+        <div class="floating bottom">
+            <div class="button raised">
+                <div id="action-save"><p>Empezar</p></div>
+            </div>
+        </div>
+    </body>
+</html>

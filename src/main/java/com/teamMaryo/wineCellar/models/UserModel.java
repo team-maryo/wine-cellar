@@ -28,6 +28,13 @@ public class UserModel {
     @NotNull
     private String password;
 
+    public UserModel(@Size(max = 64) @NotNull String username, @Size(max = 254) @NotNull String email,
+            @Size(max = 254) @NotNull String password) {
+        this.setUsername(username);
+        this.setEmail(email);
+        this.password = password;
+    }
+
     public UserModel() {
     }
 
@@ -44,15 +51,24 @@ public class UserModel {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        if(username.matches("[a-zA-Z0-9 ]+")){
+            this.username = username;
+        } else {
+            this.username = "noname";
+        }     
     }
+
 
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if(email.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")){
+            this.email= email;
+        } else {
+            this.email = "nomail@no.com";
+        }
     }
 
     public String getPassword() {

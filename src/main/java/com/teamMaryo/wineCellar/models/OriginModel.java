@@ -64,7 +64,8 @@ public class OriginModel {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((originId == null) ? 0 : originId.hashCode());
+        result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
         return result;
     }
 
@@ -77,11 +78,18 @@ public class OriginModel {
         if (getClass() != obj.getClass())
             return false;
         OriginModel other = (OriginModel) obj;
-        if (originId == null) {
-            if (other.originId != null)
+        if (nombre == null) {
+            if (other.nombre != null)
                 return false;
-        } else if (!originId.equals(other.originId))
+        } else if (!nombre.equals(other.nombre))
+            return false;
+        if (userId == null) {
+            if (other.userId != null)
+                return false;
+        } else if (!userId.equals(other.userId))
             return false;
         return true;
     }
+
+    
 }
