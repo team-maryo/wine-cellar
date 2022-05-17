@@ -1,0 +1,16 @@
+/* PAGE HEADER */
+body > .header {
+    border-bottom: 0px;
+
+    background: url(/resources/assets/login.svg);
+    background-position: 11rem 5rem;
+    background-size: 70%;
+    background-repeat: no-repeat;
+}
+
+/* PAGE ON COMPUTER */
+@media only screen and (max-width: 320px) {
+    body > .header {
+        background-position: 9rem 6rem;
+    }
+}

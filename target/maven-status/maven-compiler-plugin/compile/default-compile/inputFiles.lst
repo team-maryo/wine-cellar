@@ -13,6 +13,7 @@
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/repositories/TypeRepository.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/services/UserService.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/models/WineModel.java
+/Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/controller/UserController.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/models/PurchaseModel.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/models/UserModel.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/services/impl/OriginServiceImpl.java
@@ -20,6 +21,7 @@
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/controller/PageController.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/controller/OriginController.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/WineCellarApplication.java
+/Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/controller/AuthController.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/joins/WineExtendedJoin.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/repositories/WineRepository.java
 /Users/jgcardelus/Desktop/coding/team-maryo/wine-cellar/src/main/java/com/teamMaryo/wineCellar/services/impl/PurchaseServiceImpl.java

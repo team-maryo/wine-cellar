@@ -3,3 +3,7 @@ let header = new Header({
     title: "Hola,",
     subtitle: "Bodega - Las Tejuelas",
 });
+
+$("#action-signup").on("click", () => {
+    window.location = "/auth/signup";
+});

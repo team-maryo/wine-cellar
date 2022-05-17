@@ -8,6 +8,7 @@ import com.teamMaryo.wineCellar.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -27,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // SHA256, SHA512
     @Bean
     public PasswordEncoder passwordEncoder() {
-        PasswordEncoder defaultEncoder = NoOpPasswordEncoder.getInstance();
+        PasswordEncoder defaultEncoder = new BCryptPasswordEncoder();
         
         Map<String, PasswordEncoder> encoders = new HashMap<>();
         encoders.put("noop", NoOpPasswordEncoder.getInstance());
@@ -44,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
         .csrf().disable()
 		.authorizeRequests()
-        .antMatchers("/resources/**", "/auth/login/**", "/auth/login*").permitAll()
+        .antMatchers("/resources/**", "/auth/login/**", "/auth/login*", "/auth/signup*", "/h2*", "/h2/**").permitAll()
+        .antMatchers("/api/v1/users").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin(login -> login

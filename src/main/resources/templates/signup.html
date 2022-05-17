@@ -15,7 +15,7 @@
         <link rel="stylesheet" th:href="@{/resources/fonts/fonts.css}" />
         <link rel="stylesheet" th:href="@{/resources/styles/material.css}" />
         <link rel="stylesheet" th:href="@{/resources/styles/core.css}" />
-        <link rel="stylesheet" th:href="@{/resources/login/login.css}" />
+        <link rel="stylesheet" th:href="@{/resources/signup/signup.css}" />
 
         <!-- LIBS -->
         <script th:src="@{/resources/libs/jquery.js}"></script>
@@ -31,7 +31,7 @@
         <script defer th:src="@{/resources/scripts/primitives.js}"></script>
         <script defer th:src="@{/resources/scripts/components.js}"></script>
         <script defer th:src="@{/resources/scripts/ui.js}"></script>
-        <script defer th:src="@{/resources/login/login.js}"></script>
+        <script defer th:src="@{/resources/signup/signup.js}"></script>
     </head>
     <body>
         <div class="header">
@@ -53,36 +53,12 @@
             </div>
         </div>
 
-        <form th:action="@{/auth/login}" method="post">
-            <div class="textbox big">
-                <input
-                    type="text"
-                    autocomplete="false"
-                    placeholder="Usuario"
-                    name="username"
-                />
-            </div>
+        <div class="form" id="user-new"></div>
 
-            <div class="textbox big bottom-sep">
-                <input
-                    type="password"
-                    autocomplete="false"
-                    placeholder="Contraseña"
-                    name="password"
-                />
+        <div class="floating bottom">
+            <div class="button raised">
+                <div id="action-save"><p>Empezar</p></div>
             </div>
-
-            <div class="section">
-                <div class="button" id="action-signup">
-                    <p>¿No tienes una cuenta?</p>
-                </div>
-            </div>
-
-            <div class="floating bottom">
-                <button class="button raised" id="action-login">
-                    <p>Iniciar sesión</p>
-                </button>
-            </div>
-        </form>
+        </div>
     </body>
 </html>

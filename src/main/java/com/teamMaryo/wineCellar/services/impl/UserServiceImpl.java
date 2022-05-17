@@ -13,30 +13,37 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
 
-
     @Override
-    public UserModel create(Long userId, UserModel user){
+    public UserModel create(UserModel user){
         // Ensure that the user is non existant
         user.setUserId(null);
-
+        
         UserModel createdUser = repository.save(user);
         return createdUser;
     }
-
+    
     @Override
     public UserModel update(Long userId, UserModel user) {
-        if (!userId.equals(user.getUserId())) return null;
-
+        if (!userId.equals(user.getUserId())) return user;
+        
         UserModel updatedUser = repository.save(user);
         return updatedUser;
     } 
 
+    @Override
+    public UserModel retrieve(String username) {
+        UserModel userModel = repository.findByUsername(username);
+        return userModel;
+    }
+    
     @Override
     public UserModel retrieve(Long userId) {
         Optional<UserModel> user = repository.findById(userId);
@@ -46,7 +53,7 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
-
+    
     @Override
     public void destroy(Long userId) {
         UserModel user = retrieve(userId);
