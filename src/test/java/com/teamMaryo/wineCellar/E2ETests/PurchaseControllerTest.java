@@ -119,7 +119,7 @@ public class PurchaseControllerTest {
         purchase.setCount(20);
 
 
-        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/purchases/2";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/purchases/1";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic dXNlcjE6MTIz");
         HttpEntity<PurchaseModel> entity = new HttpEntity<>(purchase,headers);
