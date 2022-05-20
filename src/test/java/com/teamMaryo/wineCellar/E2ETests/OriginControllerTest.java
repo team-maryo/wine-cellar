@@ -112,14 +112,14 @@ public class OriginControllerTest {
     @Test
     public void TestOriginPut(){
 
-        Optional<OriginModel> originOptional = repository.findById(2L);
+        Optional<OriginModel> originOptional = repository.findById(1L);
         then(originOptional.isPresent()).isEqualTo(true);
 
         OriginModel origin = originOptional.get();
         origin.setNombre("Chrome");
 
 
-        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/origins/2";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/origins/1";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic dXNlcjE6MTIz");
         HttpEntity<OriginModel> entity = new HttpEntity<>(origin,headers);

@@ -36,42 +36,6 @@ public class WineControllerTest {
     @Autowired 
     private WineService wineService;
 
-    //POST
-    @Test
-    public void TestWinesPost() {
-
-        
-        String address = "http://localhost:" + port + "/api/v1/wines"; //tengo q añadir el wine Id al address y no se como;
-
-       
-        WineModel newWine = new WineModel();
-        newWine.setNombre("prueba");
-        newWine.setDescription("Muy rico");
-        newWine.setQuantity(3L);
-        newWine.setPrice(34);
-        newWine.setLocation("Mi bodega");
-        newWine.setYear(2005L);
-        newWine.setRating(5L);
-        newWine.setTipoId(2L);
-        newWine.setOriginId(1L);
-        newWine.setUserId(1L);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Basic dXNlcjE6MTIz");
-        HttpEntity<WineModel> request = new HttpEntity<>(newWine, headers); //Hago el request
-
-
-		ResponseEntity<WineModel> result = restTemplate.exchange(
-            address,
-            HttpMethod.POST,
-            request,
-            new ParameterizedTypeReference<WineModel>(){}
-        );
-
-        then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(result.getBody()).isEqualTo(newWine);
-        
-    }
 
     //GET
      @Test
@@ -121,7 +85,7 @@ public class WineControllerTest {
     @Test
     public void TestWinesPut(){
 
-        Optional<WineModel> wineOptional = repository.findById(2L);
+        Optional<WineModel> wineOptional = repository.findById(1L);
         then(wineOptional.isPresent()).isEqualTo(true);
 
         WineModel wine = wineOptional.get();
@@ -129,7 +93,7 @@ public class WineControllerTest {
         wine.setQuantity(34L);
 
 
-        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/wines/2";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/wines/1";
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic dXNlcjE6MTIz");
         HttpEntity<WineModel> entity = new HttpEntity<>(wine, headers);

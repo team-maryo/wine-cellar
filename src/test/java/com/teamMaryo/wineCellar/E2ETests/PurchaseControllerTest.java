@@ -73,7 +73,6 @@ public class PurchaseControllerTest {
         headers.add("Authorization", "Basic dXNlcjE6MTIz");
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
-        //como le paso al response entity el user ?
         ResponseEntity<Iterable<PurchaseModel>> result = restTemplate.exchange(
             url,
             HttpMethod.GET,
@@ -111,9 +110,9 @@ public class PurchaseControllerTest {
 
     // PUT
     @Test
-    public void TestOriginPut(){
+    public void TestPurchasePut(){
 
-        Optional<PurchaseModel> purchaseOptional = repository.findById(2L);
+        Optional<PurchaseModel> purchaseOptional = repository.findByUserIdAndPurchaseId(1L,1L);
         then(purchaseOptional.isPresent()).isEqualTo(true);
 
         PurchaseModel purchase = purchaseOptional.get();
@@ -139,7 +138,7 @@ public class PurchaseControllerTest {
 
     //DELETE
     @Test
-    public void TestOriginsDelete(){
+    public void TestPurchaseDelete(){
 
         Iterable<PurchaseModel> purchasesBefore = service.retrieveAll(1L);
 

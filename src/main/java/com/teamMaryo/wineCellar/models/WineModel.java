@@ -153,7 +153,6 @@ public class WineModel {
         result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
         result = prime * result + ((originId == null) ? 0 : originId.hashCode());
         result = prime * result + ((tipoId == null) ? 0 : tipoId.hashCode());
-        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
         return result;
     }
 
@@ -181,15 +180,10 @@ public class WineModel {
                 return false;
         } else if (!tipoId.equals(other.tipoId))
             return false;
-        if (userId == null) {
-            if (other.userId != null)
-                return false;
-        } else if (!userId.equals(other.userId))
-            return false;
         return true;
     }
 
-   
+    
 
 
 }
